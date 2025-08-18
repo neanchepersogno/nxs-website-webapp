@@ -23,7 +23,7 @@
   .page-content {
     max-width: 100%;
     margin: 0px auto 0px; /* margine superiore ancora più piccolo su mobile */
-    padding: 0px;
+    padding: 5px;
   }
 
   .about-text {

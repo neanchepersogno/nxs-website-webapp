@@ -113,10 +113,9 @@
 @media (max-width: 768px) {
   /* layout a filo bordo */
   .page-content {
-    max-width: none !important;
-    padding: 0 !important;
-    margin: 0 0 40px !important;
-    /* un po' di respiro prima del footer della MAIN */
+    max-width: 100%;
+    margin: 0px auto 0px; /* margine superiore ancora più piccolo su mobile */
+    padding: 5px;
   }
 
   .evento {

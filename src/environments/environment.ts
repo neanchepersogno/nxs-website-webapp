@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    uriAssetsImages: '/neanchepersogno/assets/images',
+    uriAssetsImages: '/assets/images',
     formspreeApi: 'https://formspree.io/f/xnnzbwrq'
 };

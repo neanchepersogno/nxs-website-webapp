@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "tailwindcss-primeui";
+
+@theme {
+  /**
+  Customize variables TailwindCss
+   */
+  --font-display: "InriaSansRegular", system-ui, sans-serif;
+  --font-bold: "InriaSansBold", system-ui, sans-serif;
+  --font-light: "InriaSansLight", system-ui, sans-serif;
+
+  --color-primary: #1d345d;
+  --color-primary-light: #ceecff;
+  --color-secondary: #b8a515;
+
+  --bg-primary: #1d345d;
+
+  /* font size */
+  --text-xs: 13px;
+  --text-sm: 16px;
+  --text-md: 18px;
+
+  /* breakpoints */
+  --breakpoint-xs: 375px;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: white;
+  color: rgb(0, 0, 0);
+}
+
+/* Preload */
+.preload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff; /* color de fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
+  animation: fadeAnimation 0.5s ease forwards;
+  animation-delay: 3.5s; /* desaparece después de 2 segundos */
+}
+
+.preload img {
+  max-width: 300px;
+  height: auto;
+  animation: pulseOpacity 1s infinite alternate;
+}
+
+@keyframes fadeAnimation {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@keyframes pulseOpacity {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Prime NG custom styles */
+.p-panel {
+  border: none !important;
+  margin-bottom: 0.5rem !important;
+}
+.p-panel-title {
+  color: black !important;
+  font-size: 12px !important;
+}
+.p-message {
+  margin: 0.25rem 0 !important;
+}
+.p-message-text {
+  font-size: 10px !important;
+  padding: 0.25rem !important;
+}

@@ -1,0 +1,372 @@
+.page-content {
+  max-width: 1000px;
+  margin: 20px auto 60px; /* margine superiore ridotto */
+  padding: 25px;
+}
+
+.evento {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.evento a.img-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.evento img {
+  max-width: 450px;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.evento img:hover {
+  transform: scale(1.05);
+}
+
+.evento-info {
+  flex: 1;
+}
+
+.evento-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.evento-dati {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.more-info-toggle {
+  font-size: 0.7rem;
+  margin-top: 10px;
+}
+
+.more-info-toggle a {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.evento-descrizione {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+  text-align: justify;
+}
+
+.evento.aperto .evento-descrizione {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+/* Rassegna sotto-eventi: rimuovo sfondo e bordi */
+.rassegna-sottoeventi {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0px;
+}
+
+.rassegna-sottoeventi .evento {
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.rassegna-sottoeventi .evento-title {
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+}
+
+.rassegna-sottoeventi .evento-dati {
+  font-size: 0.7 rem;
+  margin-bottom: 8px;
+}
+
+.rassegna-sottoeventi .more-info-toggle {
+  font-size: 0.7rem;
+  margin-top: 0;
+  text-align: right;
+}
+
+.rassegna-sottoeventi .evento-descrizione {
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  /* layout a filo bordo */
+  .page-content {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 0 40px !important;
+    /* un po' di respiro prima del footer della MAIN */
+  }
+
+  .evento {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 6px;
+    /* “filo” di spazio tra immagini */
+  }
+
+  .evento a.img-link {
+    display: block;
+    width: 100%;
+  }
+
+  .evento img,
+  .rassegna-sottoeventi .evento img {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    box-shadow: none !important;
+    /* zero bordi/ombre */
+    border: none !important;
+    /* zero bordi */
+    cursor: pointer;
+    /* tap */
+    transform: none !important;
+    /* niente hover su mobile */
+  }
+
+  /* la griglia dei sotto-eventi diventa uno stack di immagini full width */
+  .rassegna-sottoeventi {
+    display: block !important;
+    margin-top: 0 !important;
+  }
+
+  .rassegna-sottoeventi .evento {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    margin-bottom: 0px !important;
+  }
+
+  /* Mobile first: immagini cliccabili coprono tutto lo schermo */
+  @media screen and (max-width: 768px) {
+    .evento-info.active {
+      display: block;
+      /* Mostra il testo quando attivo */
+    }
+
+    .evento .zoomable {
+      cursor: pointer;
+    }
+  }
+}
+
+/* Modal content image */
+#modal-content-image {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 999999;
+  overflow: scroll;
+}
+
+#modal-content-image .box-content {
+  max-width: 100%;
+  padding: 1rem;
+  margin-top: 3rem;
+}
+
+#modal-content-image .modal-image-header {
+  padding: 0 0.5rem;
+  font-size: 44px;
+  width: 100%;
+  position: fixed;
+  right: 0;
+}
+
+#close-modal-content-image {
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  font-size: 44px;
+  color: black;
+}
+/* End modal content image */
+
+/* Modal immagine (desktop) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  cursor: zoom-out;
+  object-fit: contain;
+}
+
+/* ---------------------------
+   Nuove regole per la lista compatta dei sottoeventi
+   (solo applicate alla sezione Neanche Per Sogno Vol.2)
+   --------------------------- */
+.lista-sottoeventi {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  /* poco spazio tra i titoli */
+}
+
+/* ogni voce: titolo + pulsante sulla stessa riga */
+.lista-item {
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0;
+  border-bottom: 0px solid transparent;
+}
+
+/* riga titolo e pulsante More (allineati opposti) */
+.lista-item .title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* usa lo stesso carattere/stile dei titoli piccoli della rassegna */
+.lista-item .evento-title {
+  font-size: 0.75rem;
+  /* coerente con il resto */
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+
+/* pulsante More accanto al titolo, allineato a destra */
+.lista-item .sotto-toggle {
+  font-size: 0.7 rem;
+  text-decoration: underline;
+  color: black;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* descrizione nascosta per default, apre solo per la voce cliccata */
+.sotto-desc {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin-top: 6px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s ease;
+  text-align: justify;
+}
+
+/* overlay mobile per leggere i testi premendo l'immagine */
+#mobileOverlay {
+  display: none;
+  position: fixed;
+  z-index: 15000;
+  inset: 0;
+  background: #fff;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 22px;
+}
+
+/* inner container con un massimo di larghezza per leggibilità */
+#mobileOverlay .inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* close button overlay */
+#mobileOverlay .close {
+  position: fixed;
+  right: 14px;
+  top: 14px;
+  z-index: 16000;
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* style per l'immagine in overlay (se presente) */
+#mobileOverlay img.overlay-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  object-fit: cover;
+}
+
+/* piccolo style per il titolo dentro overlay */
+#mobileOverlay .evento-title {
+  margin-bottom: 8px;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.d-sm-none {
+  display: block;
+}
+
+@media (max-width: 580px) {
+  .d-sm-none {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* ruoli visivi per il pulsante close su mobile */
+@media (max-width: 420px) {
+  #mobileOverlay {
+    padding: 14px;
+  }
+
+  #mobileOverlay .close {
+    right: 8px;
+    top: 8px;
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="preload">
+  <img [src]="uriAssetsImages + '/logo-main.png'" alt="Logo Neanche Per Sogno" />
+</div>
+
+<main [@routeAnimation]="prepareRoute(routerOutlet)" class="main-content">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</main>
+<app-footer></app-footer>
+<app-scroll-bar-bottom></app-scroll-bar-bottom>

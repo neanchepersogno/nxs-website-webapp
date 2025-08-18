@@ -1,0 +1,268 @@
+/* --- FOOTER --- */
+.floating-footer {
+  position: fixed;
+  bottom: 25px;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+  z-index: 9998;
+  transition: transform 0.4s ease;
+}
+
+.bottom-logo-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.bottom-logo {
+  max-width: 220px;
+  height: auto;
+  opacity: 1;
+  user-select: none;
+  cursor: pointer;
+}
+
+.logo-credit {
+  margin-top: 6px;
+  font-size: 0.6rem;
+  color: #ccc;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: none;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.logo-credit a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.logo-credit a:hover {
+  text-decoration: underline;
+}
+
+.bottom-links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgb(120, 120, 120);
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: left;
+  line-height: 0.8;
+  max-width: 360px;
+  gap: 12px;
+}
+
+.bottom-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bottom-links-row {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  line-height: 0.8;
+}
+
+.bottom-links a {
+  color: rgb(120, 120, 120);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.7rem;
+  line-height: 0.8;
+}
+
+.bottom-links a:hover {
+  color: #000;
+}
+
+.bottom-links a.active {
+  color: #000;
+}
+
+.copy-email {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+  color: rgb(120, 120, 120);
+  line-height: 0.8;
+  text-align: left;
+}
+
+.newsletter-wrapper {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.8;
+  text-align: left;
+}
+
+.subscribe-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.subscribe-box input[type="email"] {
+  padding: 5px 8px;
+  font-size: 0.7rem;
+  border: 1px solid #777;
+  border-radius: 0;
+  outline: none;
+  width: 180px;
+  background-color: transparent;
+  color: #000;
+}
+
+.subscribe-box button {
+  background: none;
+  border: none;
+  color: rgb(120, 120, 120);
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+
+.subscribe-box button:hover {
+  text-decoration: underline;
+}
+
+/* --- STILI RESPONSIVE --- */
+@media (max-width: 768px) {
+  /* --- FOOTER MOBILE --- */
+  .floating-footer {
+    bottom: 25px;
+    padding: 10px 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .bottom-logo-container,
+  .bottom-links-container {
+    max-width: 45vw;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.8;
+  }
+
+  .bottom-logo-container {
+    margin-right: auto;
+    justify-content: center;
+  }
+
+  .bottom-links-container {
+    margin-left: auto;
+  }
+
+  .bottom-logo {
+    max-width: 120px;
+  }
+
+  .logo-credit {
+    font-size: 0.55rem;
+    color: #c0c0c0;
+    text-transform: none;
+    margin-top: 4px;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .bottom-links-row {
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;
+    line-height: 0.8;
+  }
+
+  .copy-email {
+    font-size: 0.65rem;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    line-height: 0.8;
+    text-align: left;
+  }
+
+  .newsletter-wrapper {
+    width: 100%;
+    line-height: 0.8;
+    text-align: left;
+  }
+
+  .subscribe-box {
+    justify-content: flex-start;
+    gap: 3px;
+    flex-wrap: nowrap;
+  }
+
+  .subscribe-box input[type="email"] {
+    width: 140px;
+    padding: 2px 6px;
+    font-size: 0.65rem;
+  }
+
+  .subscribe-box button {
+    font-size: 0.65rem;
+    padding: 4px 10px;
+  }
+
+  /* --- BORDI CONTENUTI DINAMICI SU MOBILE --- */
+  #dynamic-content-container {
+    padding: 5px; /* <-- qui puoi modificare lo spazio dai bordi dello schermo */
+    margin: 5; /* contenitore prende tutta la larghezza disponibile */
+  }
+
+  #dynamic-content-container * {
+    border: none; /* <-- rimuove eventuali bordi dai figli */
+  }
+}
+
+@media (max-width: 580px) {
+  .bottom-logo-container {
+    max-width: 100%;
+    margin: 0;
+  }
+  .subscribe-box {
+    justify-content: space-between !important;
+  }
+  .bottom-links-container {
+    max-width: 52vw;
+    margin-left: auto !important;
+    gap: 6px;
+  }
+  .bottom-links-row {
+    gap: 10px 30px !important;
+  }
+  .floating-footer {
+    gap: 0.75rem;
+    padding: 10px !important;
+    justify-content: space-between;
+  }
+}
+
+/* --- MODIFICHE GENERALI DESKTOP --- */
+@media (min-width: 769px) {
+  .bottom-links-container {
+    line-height: 0.8;
+  }
+}
+
+
+.hidden-footer {
+  transform: translateY(100%);
+}

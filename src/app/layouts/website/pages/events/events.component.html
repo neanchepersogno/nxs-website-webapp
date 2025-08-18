@@ -1,0 +1,1064 @@
+<div class="page-content">
+  <!-- Evento singolo -->
+  <div class="evento">
+    <div class="desktop-only">
+      <a class="img-link">
+        <img
+          [src]="uriAssetsImages + '/13-03-25.png'"
+          alt="Poster evento"
+          class="zoomable-event"
+        />
+      </a>
+    </div>
+    <div class="mobile-only">
+      <a class="img-link modal-link" (click)="onOpenModalContentImage($event)">
+        <img
+          [src]="uriAssetsImages + '/13-03-25.png'"
+          alt="Poster evento"
+          class="zoomable"
+        />
+      </a>
+    </div>
+
+    <div class="d-sm-none">
+      <div class="evento-info">
+        <div class="evento-title">de' Lamperi + Martenot</div>
+        <div class="evento-dati">
+          <p><i>Live performance</i></p>
+          <div style="height: 0.5em"></div>
+          <p>13 March 2025</p>
+          <p>Le Garage Lab, Trento</p>
+          <p>In collaboration with <i>Kohlhaas Records</i></p>
+          <span style="line-height: 1"><br /></span>
+
+          <p>
+            <strong>de' Lamperi</strong> is Francesco Toninelli, sound artist
+            from Florence, Italy. His production focuses on the discovery and
+            reinvention of the past and its representations, taking
+            historiographical, literary and vernacular sources as starting
+            points and materializing them in diverse forms: cinema for the ears,
+            sonic theatre, fictional philology. For the occasion he will present
+            a work of multidisciplinary storytelling based on mesopotamic
+            literary motifs and bronze age-inspired self-built acoustic
+            instruments.
+          </p>
+
+          <span style="line-height: 1"><br /></span>
+          <p></p>
+          <strong>Martenot</strong> is the solo moniker of Simone Gottardi, an
+          experimental musician and sound artist based in Turin. His
+          compositions, exclusively computer-generated, are founded on the use
+          of a minimalist vocabulary and a digital synthesis apparatus shaped by
+          strict constraints. This approach establishes a precise aesthetic
+          direction, characterized by the dichotomous alternation of
+          claustrophobic patterns, which evoke the rigid molecular structures of
+          plastic materials, in contrast to freer and more irregular sections in
+          which the musical fabric dissolves and opens up to airy and rarefied
+          scenarios.
+          <p>
+            In 2022, he launched his curatorial project
+            <i>Neanche Per Sogno</i>, releasing his debut EP
+            <i>Sfilate Spaziali</i>, followed by a series of live performances
+            and the release of <i>Faceshopping RMX</i> in July 2023. After
+            participating in events like <i>Transart</i> with a multichannel
+            sound installation, he completed his studies at the Conservatorio G.
+            Verdi in Turin in 2024.
+          </p>
+          <span style="line-height: 1"><br /></span>
+          <p>In collaboration with <i>Kohlhaas Records</i></p>
+          <p>Artwork by Martenot</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rassegna principale (modificata: titoli sottoeventi visibili di default; NO "More" principale) -->
+  <!-- aggiungo la classe "aperto" per mostrare la descrizione della rassegna di default -->
+  <div class="evento aperto">
+    <div class="desktop-only">
+      <a class="img-link">
+        <img
+          [src]="uriAssetsImages + '/nxs-vol.2-main.png'"
+          alt="Poster rassegna"
+          class="zoomable-event"
+        />
+      </a>
+    </div>
+    <div class="mobile-only">
+      <a class="img-link modal-link" (click)="onOpenModalContentImage($event)">
+        <img
+          [src]="uriAssetsImages + '/nxs-vol.2-main.png'"
+          alt="Poster rassegna"
+          class="zoomable"
+        />
+      </a>
+    </div>
+
+    <div class="d-sm-none">
+      <div class="evento-info">
+        <div class="evento-title">Neanche Per Sogno Vol.2</div>
+        <div class="evento-dati">
+          <p><i>Event Series</i></p>
+          <div style="height: 0.5em"></div>
+          <p>12–26 October 2024</p>
+          <p>
+            Produced by <i>Sorgente '90</i>, with curatorial support from
+            <i>Kohlhaas Records</i>
+          </p>
+          <p>
+            Made possible through the support of
+            <i>PGZ Val di Cembra</i> (Trentino, Italy)
+          </p>
+          <p>Artwork by <i>Muah! Studio</i></p>
+        </div>
+
+        <!-- evento-descrizione: testo + LISTA COMPATTA DEI TITOLI (visibile di default) -->
+        <div class="evento-descrizione" style="max-height: 1000px">
+          <!-- <p></p>
+
+            <!- LISTA COMPATTA (titoli visibili di default, ogni voce ha il proprio More/Less) -->
+          <div class="lista-sottoeventi">
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  DIY Screen Printing Workshop. With Angelica Stimpfl
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                Through the workshop led by <strong>Angelica Stimpfl</strong>,
+                participants explore and share their own sound experiences,
+                transforming them into matrices suitable for printing. The
+                technique used is “last-minute” screen printing, designed to
+                teach a simple and quick way to reproduce images. All
+                participants receive tote bags on which they can create their
+                own personalized prints for the Neanche Per Sogno Vol.2
+                exhibition. They are also encouraged to bring their own items
+                (hoodies, t-shirts) to print on and will contribute to a
+                large-scale collective artwork to be displayed during subsequent
+                exhibition activities.
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Angelica Stimpfl</strong> is a creative practitioner
+                  specializing in graphic design and artisanal printing. She
+                  primarily uses screen printing as a means of expression and,
+                  through exploring its potential, has collaborated with
+                  numerous musicians, artists, illustrators, and festivals,
+                  bringing their projects to life through customized products
+                  and printed graphics on paper. She experiments with multiple
+                  printing techniques to develop small workshops and personal
+                  projects. Her base is currently in Vervò, in the province of
+                  Trento, where she leads the collective residency project
+                  <i>Mugma</i>, collaborating with various initiatives both
+                  locally and beyond.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Saturday, October 12, 2024 at 10:00 AM at
+                  <em>El Molin de Portegnach</em>, Cembra Valley, Trento</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Dark Listening Session I: Mercury Hall live
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  <strong>Mercury Hall</strong> is a musician (magnetic tapes,
+                  field recordings, and electronics) and music producer, who
+                  emerged in the 2000s from the prolific independent scene of
+                  Vittorio Veneto, culminating with the Codalunga experience. By
+                  filtering the anarchic extremity of noise through the tight
+                  grids of disciplined, almost academic electroacoustics, he has
+                  created an extraordinary aesthetic and sonic universe, notable
+                  for its coherence and personality. Castro operates like the
+                  architect of a virtual sound space—unstable yet direct,
+                  formless, and constantly evocative. Previously active under
+                  the names <i>Kam Hassah</i> and <i>Endless Sea</i>, his recent
+                  solo project Mercury Hall marks a new chapter in one of
+                  Italy’s most stimulating musical journeys. <i>Lettera 22</i>,
+                  <i>Primorje</i>, and <i>Casa Di Caccia</i> are among his group
+                  experiences. He is also the founder of the labels
+                  <i>Second Sleep</i>, active since 2007, and
+                  <i>Musica Moderna</i>.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Tuesday, October 15, 2024 at 6:00 PM at
+                  <em>Le Garage Lab</em>, Trento</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  A Little Music Workshop for Kids. With Giordano Reggè.
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  The workshop with <strong>Giordano Reggè</strong> is designed
+                  for children aged 3-6 and will offer a shared sound experience
+                  for both adults and children. The goal is to raise awareness
+                  of the close relationship between musical experience and
+                  cognitive development. The Giovo library will host the
+                  workshop.
+                </p>
+
+                <p>
+                  <strong>Nati per Leggere</strong> and
+                  <strong>Nati per la Musica</strong> are programs developed
+                  together with the Association of Cultural Pediatricians, the
+                  Italian Libraries Association, and the Center for Child
+                  Health. The Editorial Observatory of Nati per Leggere selects
+                  the best books for children, suggesting engaging and
+                  stimulating books.
+                </p>
+
+                <p>
+                  The selection criteria take into account narrative quality,
+                  illustrations, typographical quality, layout, and pedagogical
+                  aspects.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Friday, October 18, 2024 at 5:00 PM at
+                  <em>Municipal Library of Giovo</em>, Cembra Valley, Trento</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Bassa Fedeltà. Musica lo-fi e fuga dal capitalismo. Talk with
+                  Enrico Monacelli
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  From the Beach Boys to Ariel Pink, from Daniel Johnston to the
+                  Microphones/Mount Eerie, the so-called lo-fi—short for “low
+                  fidelity”—has now become a major chapter in the history of
+                  indie music. But what fascinates us about these grainy,
+                  home-recorded sounds, which drown exquisite pop melodies in a
+                  tangle of hiss and unintended reverberations? And how can
+                  lo-fi help us understand our relationship with the instruments
+                  of power through technology, so that we might hack them to
+                  shape our most intimate fantasies? Part music essay, part
+                  private diary, part refined experiment in applied philosophy,
+                  <i>Bassa Fedeltà</i> drags us into the dreamlike realms of
+                  “bedroom music” par excellence, making Brian Wilson converse
+                  with Félix Guattari, Perfume Genius with Mark Fisher, black
+                  metal with Paolo Virno, transforming lo-fi musicians into
+                  cyberpunk explorers of DIY recording and revealing how these
+                  sounds—upending the hi-tech dogma—tell us about ourselves, our
+                  lives under capitalism, and the strange ways we grapple with
+                  pain, madness, and beauty.
+                </p>
+                <p>Translation into Italian by Tommaso Garavaglia.</p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Enrico Monacelli</strong> is a philosopher, writer,
+                  and cultural critic. He has written for Doppiozero, Il
+                  Tascabile, L’Indiscreto, Not, and other Italian cultural
+                  magazines. He contributes to the English music webzine The
+                  Quietus and was one of the behind-the-scenes members of Gruppo
+                  di Nun, the collective behind Demonologia rivoluzionaria (NERO
+                  2020).
+                </p>
+                <p>The discussion will be moderated by Elisa Vettori.</p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Tuesday, October 15, 2024 at 6:00 PM at
+                  <em>Le Garage Lab</em>, Trento</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  SISTERS WITH TRANSISTORS. Electronic music's unsung heroines
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  <strong>SISTERS WITH TRANSISTORS</strong> is the untold story
+                  of electronic music’s female pioneers, remarkable composers
+                  who embraced machines and their liberating technologies to
+                  utterly transform how we produce and listen to music today.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  The remarkable world of electronic music has been constantly
+                  evolving since its inception in the early 20th century. From
+                  the unlimited possibilities of digital synthesisers, to the
+                  recent analog recording revival; from the impossibly perfect
+                  pitch of Auto-Tune, to the democratisation of music making for
+                  a generation of 'bedroom’ producers, each of these
+                  extraordinary developments is directly connected to the work
+                  and artistry of the women featured in “Sisters with
+                  Transistors”.
+                </p>
+                <p>
+                  Clara Rockmore, Daphne Oram, Bebe Barron, Delia Derbyshire,
+                  Maryanne Amacher, Pauline Oliveros, Wendy Carlos, Eliane
+                  Radigue, Suzanne Ciani, and Laurie Spiegel are among the
+                  greatest pioneers of modern sound and we contin ue to feel
+                  their influence yet most people have never heard of them.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  The screening will be preceded by a dinner prepared with
+                  seasonal ingredients.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Wednesday, October 23, 2024 at 7:30 PM at
+                  <em>El Molin de Portegnach</em>, Cembra Valley, Trento</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  A Little Music Workshop for Kids. With Gaia Melillo.
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  An opportunity to enjoy a shared reading experience in the
+                  world of sounds, designed for children aged 3–6 and their
+                  parents, with the aim of providing interesting ideas that can
+                  be explored at home. This activity seeks to offer tools to
+                  support children’s cognitive and motor development in a fun
+                  and stimulating way, using the combination of reading and
+                  music. The workshop will be hosted by the Cembra Library, a
+                  hub of Nati Per la Musica, a program that promotes musical
+                  experiences within the family as a means of fostering better
+                  child development from birth.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Friday, October 25, 2024 at 5:00 PM at
+                  <em>Municipal Library of Cembra</em>, Cembra Valley, Trento</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Dark Listening Session II: Heith, VIBRISSE, Angel Anger
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  <strong>Angel Anger</strong> is an expansive, noise-infused
+                  dreamscape, made of celestial voices, sleepwalking gabber,
+                  bitcrushers, and Eastern European lullabies. Mixing no-input
+                  mixing techniques with a ghostly vocal style, Adriana Ghimp,
+                  the creative force behind Angel Anger, takes the audience on a
+                  journey through a soundscape that is at once ethereal and
+                  intense. Pulsing rhythms, distorted beats, and hypnotic
+                  melodies intertwine in an enchanted world that Angel Anger
+                  creates and reinvents live on stage.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Heith</strong>’s music traverses multiple sonic
+                  landscapes, settling in a no-man’s-land of electronic music
+                  where organic and digital elements constantly intersect. Often
+                  evoking confusion and disorientation, his music lays the
+                  groundwork for a mediated conflict between different
+                  practices, evident in his debut album X, wheel (2022, PAN),
+                  where synthesizers, percussion, guitars, and electronics
+                  occupy and compete for the same space. If X, wheel marked the
+                  beginning of a tortuous exploration of consciousness, the
+                  following EP, The Liars Tell… (2024, PAN), feels more like a
+                  truce—a moment of meditation and pause from the strain of
+                  dimensional leaps. At the center of this work is a hypnotic
+                  exploration of synthesizers and voice, treated as a fragile,
+                  spectral presence and rendered material through intense
+                  digital transformations. After founding the label Haunter
+                  Records in 2013, Heith became part of the curatorial team at
+                  the legendary Milanese venue Macao. He has released a series
+                  of EPs (Laguna 2018, Mud 2019, Lo Zoo di Venere 2020) and
+                  collaborated with numerous artists, including Puce Mary,
+                  Visio, Kareem Lotfy, and Jesse Osborne-Lanthier.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>VIBRISSE</strong> is a two-headed project based in
+                  Turin that works through frenetic and unpredictable selections
+                  to break down any kind of separation between musical genres,
+                  people, and emotions. The focus is on high-BPM hardcore, while
+                  simultaneously incorporating influences from the contemporary
+                  digital club scene. On the dance floor, the duo creates
+                  euphoric experiences where tracks from across the entire
+                  hardcore spectrum (uptempo, mainstyle, frenchcore, j-core,
+                  gabber, makina) collide with unexpected hits drawn from other
+                  equally energetic styles (slowstyle, EDM, 160 club, donk).
+                  Their tracks have been released on labels such as Safe Cloud
+                  Records (FR), Country Music (SE), Burenhinder (BE), Club Late
+                  Music (FR), and Nightcore4TotalSluts (UK), while their
+                  uncompromising mixes have appeared on Toxic Sickness (UK),
+                  Childsplay (UK), Wixapolonia (PL), Gabber Industries Berlin
+                  (DE), Ashida Park (AU), Soul Feeder (ITA/DE), Unizone (CZ),
+                  The Donkline (UK), Art Dream Foundation (UK/CH), and many
+                  more.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Saturday, October 26, 2024 at 10:00 PM at
+                  <em>El Molin de Portegnach</em>, Cembra Valley, Trento</u
+                >
+              </div>
+            </div>
+          </div>
+          <!-- /lista-sottoeventi -->
+        </div>
+        <!-- /evento-descrizione -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Rassegna principale (modificata: titoli sottoeventi visibili di default; NO "More" principale) -->
+  <!-- aggiungo la classe "aperto" per mostrare la descrizione della rassegna di default -->
+  <div class="evento aperto">
+    <div class="desktop-only">
+      <a class="img-link">
+        <img
+          [src]="uriAssetsImages + '/nxs-vol.1-main.png'"
+          alt="Poster rassegna"
+          class="zoomable-event"
+        />
+      </a>
+    </div>
+    <div class="mobile-only">
+      <a class="img-link modal-link" (click)="onOpenModalContentImage($event)">
+        <img
+          [src]="uriAssetsImages + '/nxs-vol.1-main.png'"
+          alt="Poster rassegna"
+          class="zoomable"
+        />
+      </a>
+    </div>
+
+    <div class="d-sm-none">
+      <div class="evento-info">
+        <div class="evento-title">Neanche Per Sogno Vol.1</div>
+        <div class="evento-dati">
+          <p><i>Event Series</i></p>
+          <div style="height: 0.5em"></div>
+          <p>15–18 November 2023</p>
+          <p>
+            Produced by <i>Sorgente '90</i>, with curatorial support from
+            <i>Kohlhaas Records</i>
+          </p>
+          <p>
+            Made possible through the support of
+            <i>PGZ Val di Cembra</i> (Trentino, Italy)
+          </p>
+          <p>Artwork by <i>Muah! Studio</i></p>
+        </div>
+
+        <!-- evento-descrizione: testo + LISTA COMPATTA DEI TITOLI (visibile di default) -->
+        <div class="evento-descrizione" style="max-height: 1000px">
+          <!--< QUI POSSO INSERIRE TESTO <p></p>
+
+            <!- LISTA COMPATTA (titoli visibili di default, ogni voce ha il proprio More/Less) -->
+          <div class="lista-sottoeventi">
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Polymorphism. With Clon_E Collective
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  <strong>Polymorphism</strong> is a multimedia and interactive
+                  live performance project that explores hybrid connections
+                  between body and technology in relation to the space that
+                  hosts them, using pressure sensors and motion-tracking
+                  technologies.
+                </p>
+                <p>
+                  In Polymorphism, the performative act becomes a field of
+                  research to rediscover the human need for contact between
+                  bodies and languages.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Clon_E</strong> was founded in Bologna in 2018 through
+                  the collaboration of multidisciplinary artists
+                  <strong>Silvia Parolin</strong> and
+                  <strong>Consuelo Donati</strong>. Their practice focuses on
+                  the interaction between organic and electronic bodies, with
+                  multimedia and interactive performance as their primary field
+                  of investigation. Exploring new languages between body and
+                  technology through a transdisciplinary approach, they embrace
+                  a queer and techno-spiritual aesthetic.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Wednesday, November 15, 2023 at 6:30 PM at
+                  <em>Le Garage Lab</em></u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Deep Listening: A Composer's Sound Practice. With Diana Lola
+                  Posani
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  <i>Deep Listening</i> is a practice created by Pauline
+                  Oliveros, an American queer composer, improviser, and
+                  performer, which explores the difference between the
+                  involuntary nature of hearing and the voluntary, selective
+                  nature of listening. In her book
+                  <i>Deep Listening: A Composer's Sound Practice</i>, she
+                  defines deep listening as learning to expand one’s perception
+                  of sounds to include the entire space-time continuum of sound,
+                  embracing as much of its vastness and complexity as possible.
+                </p>
+                <p>
+                  Practically, deep listening involves exercises in bodily
+                  proprioception and guided listening to everyday sounds. In
+                  this workshop, listening is explored as a poetic tool to
+                  expand the boundaries of reality. Starting from Pauline
+                  Oliveros’ deep listening practice, participants are guided to
+                  rediscover the imaginative potential of listening, allowing
+                  inner sounds to reveal new, unexplored landscapes.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Diana Lola Posani</strong> is a sound artist, vocal
+                  performer, and certified Deep Listening facilitator through
+                  the Deep Listening Foundation. She performs internationally,
+                  writes for A Row of Trees, the journal of the Sonic Art
+                  Research Unit (SARU) at Oxford Brookes University, and debuted
+                  in 2022 on Fango Radio with the podcast Kaikokaipuu. Her
+                  current research focuses on the shared space between sound and
+                  poetic imagination through interdisciplinary works and sound
+                  poetry. In March 2023, she published her Italian translation
+                  of Pauline Oliveros’
+                  <i>Deep Listening: A Composer's Sound Practice</i> with Timeo.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Thursday, November 16, 2023 at 8:30 PM at
+                  <em>Libreria Clandestina</em>, Grumes, Cembra Valley</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  A Little Music Workshop for Kids. With Giordano Reggè.
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  The workshop with <strong>Giordano Reggè</strong>, aimed at
+                  children aged 3–6, offers a shared sound experience between
+                  adults and children, fostering awareness of the close
+                  relationship between musical experience and a child’s
+                  cognitive development.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  The Municipal Library of Cembra Lisignago, a local hub for the
+                  <i>Nati Per Leggere</i> and
+                  <i>Nati Per La Musica</i> programs, promotes these initiatives
+                  for the community and local residents.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Nati Per La Musica</strong> is a program that
+                  encourages musical experiences within the family as a
+                  relational tool to support optimal child development from
+                  birth.
+                </p>
+
+                <div style="height: 0.5em"></div>
+                <u
+                  >Friday, November 17, 2023 at 5:00 PM at
+                  <em>Municipal Library of Cembra Lisignago</em>, Cembra, Cembra
+                  Valley</u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Field Studies Workshop. With Glauco Salvo
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  The workshop led by <strong>Glauco Salvo</strong> alternates
+                  indoor and outdoor sessions, focusing on listening and the
+                  acoustic exploration of space, with particular attention to
+                  the interaction between environmental and recorded sound,
+                  aural perception and imagination, movement and posture, and
+                  listening mediated by audio recording/playback technology
+                  (using speakers and microphones). The workshop combines group
+                  and individual listening exercises, outdoor recording
+                  activities, and moments of collective discussion and
+                  reflection.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Glauco Salvo</strong> is a musician and sound artist
+                  active in the Italian independent and experimental scene. His
+                  research focuses on exploring new pathways between folk, rock,
+                  and experimental music through the use of string instruments
+                  and sound recording/playback devices. He investigates
+                  perceptual alteration and the contamination of environmental
+                  recordings by artificial sounds and external agents,
+                  transforming recordings into subtly unreal spaces by altering
+                  their balance, color, and tone.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Saturday, November 18, 2023 at 10:00 AM at
+                  <em>El Molin de Portegnach</em></u
+                >
+              </div>
+            </div>
+
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Puce Mary, Holy Similaun, Lemmo, Lefka & Fac, Martenot
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  <strong>Puce Mary</strong> is the stage name of Danish
+                  experimental musician Frederikke Hoffmeier.
+                </p>
+                <p>
+                  Over her extensive career in electronic experimentation, Puce
+                  Mary has become renowned for her captivating live
+                  performances, ranging from intense interpretations of
+                  cinematic compositions to unrelenting harsh noise. Often
+                  associated with the current generation of industrial noise,
+                  her recent projects explore sound more broadly than before,
+                  embracing a complex sonic and formal narrative that, through
+                  unsettling dynamics and surreal atmospheres, oscillates
+                  between tension and release.
+                </p>
+                <p>
+                  With numerous releases on labels such as Posh Isolation and
+                  PAN, as well as performances and collaborations with artists
+                  like Drew McDowall, Varg2TM, Kali Malone, and Stephen
+                  O’Malley, Puce Mary has earned widespread recognition for her
+                  powerful and extraordinary combination of experimental
+                  electronics and noise.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Holy Similaun</strong> is an enchanting and enigmatic
+                  musical endeavour hailing from the picturesque landscapes of
+                  Italy, emerging as a compelling force in the realm of European
+                  experimental music. Its innovative approach to music
+                  transcends conventional boundaries, pushing the boundaries of
+                  sonic possibilities.
+                </p>
+                <p>
+                  What truly distinguishes Holy Similaun is its extraordinary
+                  ability to transport audiences into ethereal and immersive
+                  auditory landscapes. Its compositions are not just mere songs
+                  but intricate odysseys, inviting listeners to embark on a
+                  mesmerizing journey through unexplored realms of the sonic
+                  experience.
+                </p>
+                <p>
+                  Those who venture into the auditory realm of Holy Similaun
+                  embark on a captivating journey through uncharted territory,
+                  guided by the project’s unwavering commitment to defying
+                  convention and pushing the limits of musical expression.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  Italian music producer Gustavo Cambareri, better known as
+                  <strong>Lefka</strong>, creates melancholic, abstract, and
+                  abrasive compositions. Born in Italy and now based in
+                  Amsterdam, he has released numerous albums spanning a wide
+                  range of styles, from collaborations with the Milanese hip-hop
+                  scene to noise performances, including his debut album
+                  <i>Hypermelancholy</i> on <i>Hide Productions</i>.
+                </p>
+                <p>
+                  Lefka’s exploratory musical practice is complemented by the
+                  work of graphic designer and multidisciplinary artist
+                  <strong>Fac</strong>, whose creations oscillate between the
+                  real and the fictional, the natural and the artificial, the
+                  recognizable and the unsettling. For Neanche Per Sogno, the
+                  duo joins forces to present their new live A/V performance.
+                </p>
+                <div style="height: 0.5em"></div>
+                <p>
+                  <strong>Lemmo</strong> is a composer and sound researcher
+                  active in the field of electronic and experimental music.
+                  Their work investigates the possibilities of algorithmic
+                  composition in dialogue with acoustic space and as a listening
+                  practice, both within sound research and in multidisciplinary
+                  contexts.
+                </p>
+                <p>
+                  A central focus of their practice is the electronic medium as
+                  a tool for observation and exploration: on one hand, through
+                  algorithmic programming for sound synthesis and the processing
+                  of complex data structures; on the other, through the study of
+                  recorded sound and field recordings.
+                </p>
+
+                <p></p>
+                <p>
+                  They also work as a sound designer for performing and visual
+                  arts, collaborating with artists such as Chiara Bersani,
+                  Teatro Valdoca, and Margherita Morgantin, and teach electronic
+                  music. Their releases include the LP <i>COSMIC SILENCE</i> 5
+                  and fluorescence 4 with Margherita Morgantin (XONG collection,
+                  Xing).
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Saturday, November 18, 2023 at 10:00 PM at
+                  <em>El Molin de Portegnach</em></u
+                >
+                <div style="height: 0.5em"></div>
+              </div>
+            </div>
+          </div>
+          <!-- /lista-sottoeventi -->
+        </div>
+        <!-- /evento-descrizione -->
+      </div>
+    </div>
+  </div>
+  <div class="evento aperto">
+    <div class="desktop-only">
+      <a class="img-link">
+        <img
+          [src]="uriAssetsImages + '/nxs-vol.0-main.png'"
+          alt="Poster rassegna"
+          class="zoomable-event"
+        />
+      </a>
+    </div>
+    <div class="mobile-only">
+      <a class="img-link modal-link" (click)="onOpenModalContentImage($event)">
+        <img
+          [src]="uriAssetsImages + '/nxs-vol.0-main.png'"
+          alt="Poster rassegna"
+          class="zoomable"
+        />
+      </a>
+    </div>
+
+    <div class="d-sm-none">
+      <div class="evento-info">
+        <div class="evento-title">Neanche Per Sogno Vol.0</div>
+        <div class="evento-dati">
+          <p><i>Event Series</i></p>
+          <div style="height: 0.5em"></div>
+          <p>2–3 November 2022</p>
+          <p>El Molin de Portegnach, Cembra Valley, Trento</p>
+          <p>
+            Produced by <i>Sorgente '90</i>, with the curatorial supporto from
+            <i>Kohlhaas Records</i>
+          </p>
+        </div>
+
+        <!-- evento-descrizione: testo + LISTA COMPATTA DEI TITOLI (visibile di default) -->
+        <div class="evento-descrizione" style="max-height: 1000px">
+          <p></p>
+
+          <!-- LISTA COMPATTA (titoli visibili di default, ogni voce ha il proprio More/Less) -->
+          <div class="lista-sottoeventi">
+            <div class="lista-item">
+              <div class="title-row">
+                <div class="evento-title">
+                  Talk and Listening Session with Kohlhaas Records
+                </div>
+                <button
+                  class="sotto-toggle"
+                  (click)="onToggleSottoEvento($event)"
+                >
+                  More
+                </button>
+              </div>
+              <div class="sotto-desc" aria-hidden="true">
+                <p>
+                  <strong>Kohlhaas Records</strong> is an independent label
+                  active since 2013, devoted to exploring and experimenting with
+                  sound, image, and the spoken word.
+                </p>
+                <p>
+                  In the talk, the label shares its story and creative vision,
+                  followed by an acousmatic listening session that brings its
+                  productions into dialogue with the musical experiences that
+                  continue to shape and inspire its artistic path.
+                </p>
+                <div style="height: 0.5em"></div>
+                <u
+                  >Friday, December 2, 2022 at 9:00 PM at
+                  <em>El Molin de Portegnach</em></u
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="lista-item">
+            <div class="title-row">
+              <div class="evento-title">Trigger Collective Showcase</div>
+              <button
+                class="sotto-toggle"
+                (click)="onToggleSottoEvento($event)"
+              >
+                More
+              </button>
+            </div>
+            <div class="sotto-desc" aria-hidden="true">
+              <p>
+                Founded in Trento at the end of 2021,
+                <strong>Trigger Collective</strong> is driven by a passion for
+                sonic experimentation through unconventional means and
+                approaches. Its aim is to create opportunities to share and
+                intertwine different expressive forces, going beyond the
+                individual dimension of its members.
+              </p>
+              <p>
+                In its first year, the collective actively involved 15 artists
+                and continuously draws inspiration from experimentation with
+                live coding, analog synthesizers, feedback techniques, and
+                hacked toys.
+              </p>
+              <div style="height: 0.5em"></div>
+              <p>On this occasion, the featured projects are:</p>
+              <div style="height: 0.5em"></div>
+              <p>
+                <strong>IanO</strong> is an 8bit-core producer presenting a
+                custom set inspired by the fantasy atmospheres of
+                <i>Dungeons & Dragons</i> and <i>Zelda</i>.
+              </p>
+              <div style="height: 0.5em"></div>
+              <p>
+                <strong>Return_Nihil</strong>is the project in which Ardan Dal
+                Rì arranges structures within source code, handles real-time
+                errors, formalizes, elaborates, and eliminates.
+              </p>
+              <div style="height: 0.5em"></div>
+              <p>
+                <strong>Buzzkeeper</strong> is a love letter to feedback,
+                crafted by Ardo and Jack Slow.
+              </p>
+              <p>
+                No-input mixers serve as the sole sound source, while the
+                feedback they generate is manipulated but never fully tamed due
+                to its unpredictable nature. Buzzkeeper reveres the spontaneous
+                life of feedback and inhabits the tension between chaos and
+                direction.
+              </p>
+              <div style="height: 0.5em"></div>
+              <p>
+                <strong>.itch.itch.itch</strong>is the musical project of Yarin
+                Sassudelli, guiding listeners through cosmic atmospheres and
+                spatial imaginaries created solely with a modular synthesizer.
+              </p>
+              <div style="height: 0.5em"></div>
+              <u
+                >Friday, December 2, 2022 at 10:30 PM at
+                <em>El Molin de Portegnach</em></u
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="lista-item">
+          <div class="title-row">
+            <div class="evento-title">
+              Maurizio Berta, Martenot, Corgiat & Akasha, kudd
+            </div>
+            <button
+              class="sotto-toggle text-[11px]"
+              (click)="onToggleSottoEvento($event)"
+            >
+              More
+            </button>
+          </div>
+          <div class="sotto-desc" aria-hidden="true">
+            <p>
+              <strong>Maurizio Berta</strong> is an Italian composer and
+              performer interested in using algorithmic processes to organize
+              sound materials.
+            </p>
+            <p>
+              For <i>Neanche Per Sogno Vol.0</i>, he presents a set in which the
+              order of the listening material—ranging from ambient to dub and
+              breakbeat—is determined by an AI system, bringing to the stage a
+              method that has become common in streaming-based listening.
+            </p>
+            <p>
+              The AI shapes the musical journey according to the acoustic
+              similarity parameters deemed most relevant among the selected
+              sound materials.
+            </p>
+            <div style="height: 0.5em"></div>
+            <p>
+              <strong>Martenot</strong> is the solo project of Simone Gottardi,
+              an experimental musician and sound artist based in Turin.
+            </p>
+
+            <p>
+              His computer-generated compositions use a minimalist vocabulary
+              and digital synthesis shaped by strict constraints, alternating
+              between claustrophobic, structured patterns and freer, airy
+              passages.
+            </p>
+            <p>
+              In 2022, he launched his curatorial project
+              <i>Neanche Per Sogno</i> and released his debut EP
+              <i>Sfilate Spaziali</i>, a seminal three-track record.
+            </p>
+            <div style="height: 0.5em"></div>
+            <p><strong>Corgiat & Akasha present: Antropo-Amorfo</strong></p>
+            <div style="height: 0.5em"></div>
+            <p>
+              <i>Antropo-Amorfo</i> project that oscillates between abstraction
+              and real-world forms. <strong>Corgiat</strong>, a composer and
+              researcher from Turin, assembles, transforms, and projects
+              concrete, synthetic, and instrumental sounds. The power ambient
+              textures interact in real time with visual artist
+              <strong>Akasha</strong>, the stage name of Riccardo Franco-Loiri,
+              creating a synchronized flow of acoustic and visual data, where
+              digital geometric shapes intertwine with tangible materials.
+            </p>
+            <div style="height: 0.5em"></div>
+            <p>
+              <strong>kudd</strong> is a DJ and collector by passion. He moves
+              across bass music, jazz, techno, and hip-hop and since 2020, he
+              has hosted <i>Bear Says</i>, his biweekly show on
+              <i>Radio Banda Larga</i>, a Turin-based web radio conceived as a
+              social platform for cultural dissemination.
+            </p>
+            <div style="height: 0.5em"></div>
+            <u
+              >Saturday, December 3, 2022 at 10:00 PM at
+              <em>El Molin de Portegnach</em></u
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal zoom image -->
+<div id="modalZoomEvent" class="modal" (click)="onCloseModal()">
+  <img
+    id="modal-img-event"
+    class="modal-content"
+    src=""
+    alt="Immagine ingrandita"
+  />
+</div>
+
+<!-- Modal per testo mobile -->
+<div id="modal-content-image" class="modal">
+  <div class="modal-image-header">
+    <span id="close-modal-content-image" (click)="onCloseModalContentImage()"
+      >&times;</span
+    >
+  </div>
+  <div class="box-content"></div>
+</div>

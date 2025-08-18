@@ -1,0 +1,87 @@
+<div class="floating-footer" [ngClass]="{ 'hidden-footer': isHidden }">
+  <div class="bottom-logo-container">
+    <a [routerLink]="['']">
+      <img
+        class="bottom-logo"
+        [src]="uriAssetsImages + '/nxs-logo.png'"
+        alt="EST. 2022, Logo Neanche Per Sogno"
+      />
+    </a>
+    <div class="logo-credit">
+      EST. 2022, Logo by
+      <a
+        href="https://www.muah.studio"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Muah! Studio</a
+      >
+    </div>
+  </div>
+
+  <div class="bottom-links-container">
+    <div class="bottom-links">
+      <div class="bottom-links-row">
+        <a [routerLink]="['about']" routerLinkActive="active">About</a>
+        <a [routerLink]="['releases']" routerLinkActive="active">Releases</a>
+        <a [routerLink]="['events']" routerLinkActive="active">Events</a>
+        <a [routerLink]="['mixtape-archive']" routerLinkActive="active"
+          >Mixtape Archive</a
+        >
+        <a
+          href="https://nxsrecords.bandcamp.com/merch"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Buy</a
+        >
+      </div>
+    </div>
+
+    <div class="copy-email" (click)="onCopyEmail()">
+      {{ emailCopy }}
+    </div>
+
+    <p class="newsletter-title">Newsletter:</p>
+
+    <div class="newsletter-wrapper">
+      <form
+        [formGroup]="fgNewsletter"
+        (submit)="onSubmitForm()"
+        id="newsletter-form"
+        class="subscribe-box"
+      >
+        <input
+          formControlName="email"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email address"
+          required
+        />
+
+        @if (isLoadingForm) {
+        <button type="submit">Enviando...</button>
+        } @else {
+        <button type="submit" [disabled]="fgNewsletter.invalid">
+          Subscribe
+        </button>
+        }
+
+        <span
+          id="form-status"
+          style="
+            margin-left: 10px;
+            font-size: 0.7rem;
+            color: rgb(127, 127, 127);
+          "
+        ></span>
+      </form>
+      <div class="messagge-form">
+        <div class="card flex flex-col">
+          @if (visibleMessageForm()) {
+          <p-message [life]="3000" closable [severity]="messageForm.severity">{{ messageForm.message }}</p-message>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

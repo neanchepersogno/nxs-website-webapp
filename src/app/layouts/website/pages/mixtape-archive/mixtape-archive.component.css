@@ -33,20 +33,22 @@
 /* MOBILE STYLING: testo e immagini full width, zero margini/bordi */
 @media (max-width: 768px) {
   .content-wrapper {
-    margin: 3px;
-    padding: 3px;
+    margin: 5px;
+    padding: 0px;
   }
 
   .page-content {
     max-width: 100%;
-    margin: 0px auto 0px; /* margine superiore ancora più piccolo su mobile */
-    padding: 5px;
+    margin: 0 auto;
+    padding: 0px;
+    text-align: justify;   /* giustifica tutto il testo */
+    line-height: 1.4;      /* 🔹 controlla interlinea generale */
   }
 
   .grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 4px;
   }
 
   .grid-item {
@@ -59,4 +61,31 @@
     height: auto;
     object-fit: cover;
   }
+
+  /* ===== Contributors ===== */
+  .contributors-column ul {
+    display: block;        /* 🔹 permette l'andata a capo */
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    text-align: justify;   /* giustifica i nomi */
+    line-height: 1.4;      /* 🔹 controlla interlinea tra le righe dei nomi */
+  }
+
+  .contributors-column ul li {
+    display: inline;       /* 🔹 i nomi restano in linea */
+    margin: 0;
+  }
+
+  /* aggiunge virgola + spazio dopo ogni nome */
+  .contributors-column ul li::after {
+    content: ",\00a0";     /* virgola + spazio non separabile */
+  }
+
+  /* rimuove la virgola dall'ultimo elemento */
+  .contributors-column ul li:last-child::after {
+    content: "";
+  }
 }
+
+

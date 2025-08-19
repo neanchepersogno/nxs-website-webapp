@@ -122,7 +122,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
     /* “filo” di spazio tra immagini */
   }
 
@@ -174,6 +174,52 @@
     }
   }
 }
+
+/* Scritta Details sopra immagine solo su schermi piccoli */
+@media (max-width: 580px) {
+  /* Contenitore relativo per far posizionare l’overlay correttamente */
+  .evento a.img-link {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Bottone "Details" */
+  .more-overlay {
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    right: 7px; /* vicino all’angolo destro */
+    background: rgba(255, 255, 255, 0.3); /* semitrasparente */
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 7px 4px; /* piccolo padding intorno al testo */
+    border-radius: 0; /* spigoli vivi */
+    text-align: center;
+    cursor: pointer;
+    z-index: 2;
+    border: 2px solid rgba(255, 255, 255, 0.6); /* contorno leggero */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* leggero rilievo */
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .more-overlay:hover {
+    background: rgba(255, 255, 255, 0.5); /* più evidente al passaggio del mouse */
+    transform: scale(1.05); /* leggero effetto “bottone cliccabile” */
+  }
+
+
+
+}
+
+/* Nasconde la scritta su desktop */
+@media (min-width: 581px) {
+  .more-overlay {
+    display: none;
+  }
+}
+
 
 /* Modal content image */
 #modal-content-image {
@@ -301,12 +347,12 @@
   background: #fff;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 22px;
+  padding: 12px;
 }
 
 /* inner container con un massimo di larghezza per leggibilità */
 #mobileOverlay .inner {
-  max-width: 900px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -369,3 +415,28 @@
     font-size: 24px;
   }
 }
+#close-modal-content-image {
+  font-size: fixed; /* dimensione della X */
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  top: -5px;
+  right: 10px;
+}
+#modal-content-image .box-content {
+  max-width: 600px;          /* larghezza massima leggibile */
+  margin: 1rem auto;         /* margine sopra e sotto ridotto */
+  padding: 0.5rem;           /* padding interno più piccolo */
+  box-sizing: border-box;
+}
+
+@media (max-width: 580px) {
+  #modal-content-image .box-content {
+    max-width: 100%;           /* quasi tutto lo schermo su mobile */
+    margin: 0.5rem auto;      
+    padding: 0.5rem;         
+  }
+}
+
+
+

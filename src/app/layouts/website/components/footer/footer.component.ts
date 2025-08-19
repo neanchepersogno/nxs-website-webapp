@@ -41,20 +41,30 @@ export class FooterComponent implements OnInit {
     this.visibleMessageForm.set(false);
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+@HostListener('window:scroll', [])
+onWindowScroll() {
+  const currentScroll = window.scrollY || document.documentElement.scrollTop;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-    if (currentScroll > this.lastScrollTop && currentScroll > 100) {
-      // Scrolleando hacia abajo
-      this.isHidden = true;
-    } else {
-      // Scrolleando hacia arriba
+  // Se la pagina non è scrollabile, il footer resta sempre visibile
+  if (maxScroll <= 0) {
+    this.isHidden = false;
+    return;
+  }
+
+  if (currentScroll > this.lastScrollTop) {
+    // Scroll in giù → nascondi
+    this.isHidden = true;
+  } else if (currentScroll < this.lastScrollTop) {
+    // Scroll in su → mostra SOLO se non sei in fondo
+    if (currentScroll < maxScroll - 50) { 
       this.isHidden = false;
     }
-
-    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
+
+  this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+}
+
 
   // Functions
   onSubmitForm(){

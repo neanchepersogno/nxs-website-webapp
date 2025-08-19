@@ -10,7 +10,7 @@
   align-items: center;
   padding: 30px 60px;
   z-index: 9998;
-  transition: transform 0.4s ease;
+  transition: transform 0.8s ease;
 }
 
 .bottom-logo-container {

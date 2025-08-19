@@ -4,7 +4,7 @@
       <img
         class="bottom-logo"
         [src]="uriAssetsImages + '/nxs-logo.png'"
-        alt="EST. 2022, Logo Neanche Per Sogno"
+        alt="Logo Neanche Per Sogno"
       />
     </a>
     <div class="logo-credit">
@@ -59,7 +59,7 @@
         />
 
         @if (isLoadingForm) {
-        <button type="submit">Enviando...</button>
+        <button type="submit">Sending...</button>
         } @else {
         <button type="submit" [disabled]="fgNewsletter.invalid">
           Subscribe

@@ -21,8 +21,13 @@
   font-size: 0.8rem;
   font-weight: bold;
   white-space: nowrap;
-  padding-right: 3rem;
+  padding-right: 2rem;
 }
+
+.scroll-bar a {
+  line-height: 25px;
+}
+
 
 .scroll-content {
   display: inline-block;
@@ -32,7 +37,7 @@
 .scroll-wrapper {
   display: inline-block;
   white-space: nowrap;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 60s linear infinite;
 }
 
 @keyframes scroll-left {

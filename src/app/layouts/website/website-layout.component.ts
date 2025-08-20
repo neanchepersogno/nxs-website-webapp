@@ -14,8 +14,8 @@ import { environment } from '../../../environments/environment';
   animations: [
     trigger('routeAnimation', [
       transition('* <=> *', [
-        style({ transform: 'translateY(100%)', opacity: 0 }), // empieza desde abajo
-        animate('600ms ease-out', style({ transform: 'translateY(0)', opacity: 1 })) // termina en su lugar
+        style({ transform: 'translateY(10%)', opacity: 0 }), // empieza desde abajo
+        animate('800ms ease-out', style({ transform: 'translateY(0)', opacity: 1 })) // termina en su lugar
       ])
     ])
   ]

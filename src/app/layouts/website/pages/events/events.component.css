@@ -199,8 +199,8 @@
     text-align: center;
     cursor: pointer;
     z-index: 2;
-    border: 2px solid rgba(255, 255, 255, 0.6); /* contorno leggero */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* leggero rilievo */
+    border: 1.5px solid rgba(255, 255, 255, 0.276); /* contorno leggero */
+    box-shadow: 0 0px 6px rgba(255, 255, 255, 0.426); /* leggero rilievo */
     transition: background 0.3s, transform 0.2s;
   }
 

@@ -153,12 +153,15 @@
     width: 100%;
   }
 
-  .bottom-logo-container,
+  .bottom-logo-container {
+    transform: translateX(15px); /* positivo = verso destra, negativo = verso sinistra */
+  }
   .bottom-links-container {
     max-width: 45vw;
     display: flex;
     flex-direction: column;
     line-height: 0.8;
+    transform: translateX(15px) translateY(5px); ; 
   }
 
   .bottom-logo-container {
@@ -171,7 +174,7 @@
   }
 
   .bottom-logo {
-    max-width: 120px;
+    max-width: 140px;
   }
 
   .logo-credit {
@@ -193,7 +196,7 @@
   .copy-email {
     font-size: 0.65rem;
     margin-top: 2px;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
     line-height: 0.8;
     text-align: left;
   }
@@ -206,7 +209,7 @@
 
   .subscribe-box {
     justify-content: flex-start;
-    gap: 3px;
+    gap: 0px;
     flex-wrap: nowrap;
   }
 

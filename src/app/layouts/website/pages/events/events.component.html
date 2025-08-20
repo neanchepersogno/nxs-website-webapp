@@ -1,4 +1,64 @@
 <div class="page-content">
+<!-- Evento singolo -->
+  <div class="evento">
+    <div class="desktop-only">
+      <a class="img-link">
+        <img
+          [src]="uriAssetsImages + '/tl-ripple.png'"
+          alt="Poster evento"
+          class="zoomable-event"
+        />
+      </a>
+    </div>
+    <div class="mobile-only">
+      <a class="img-link modal-link" (click)="onOpenModalContentImage($event)">
+        <span class="more-overlay">Details</span>
+        <img
+          [src]="uriAssetsImages + '/tl-ripple.png'"
+          alt="Poster evento"
+          class="zoomable"
+        />
+      </a>
+    </div>
+
+    <div class="d-sm-none">
+      <div class="evento-info">
+        <div class="evento-title">UPCOMING: The Listeners Ripple</div>
+        <div class="evento-dati">
+        <p><i>A weekend of concerts, sonic research, and independent curation dedicated to the emerging music scene</i></p>
+          <div style="height: 0.5em"></div>
+          <p>13-14 September 2025, 6 PM</p>
+          <p>PAV - Parco Arte Vivente, Turin</p>
+          <div style="height: 0.5em"></div>
+          <p>A project by <i>The Listeners</i></p>
+          <p>Artwork by <i>CRIPTA747</i></p>
+          <span style="line-height: 1"><br /></span>
+
+          <!--  <p><i>A weekend of concerts, sonic research, and independent curation dedicated to the emerging music scene</i></p> -->
+          <div style="height: 0.5em"></div>
+          <p>On Saturday 13 and Sunday 14 September, <strong>The Listeners Ripple</strong> brings two days of live concerts and performances at PAV – Parco Arte Vivente in Turin, celebrating the emerging contemporary music scene.</p>
+
+<p>The initiative is part of a broader training and mentorship project for young curators, through which <strong>The Listeners</strong>, an informal network dedicated to transdisciplinary sound-based practices, reaffirms its commitment to supporting and guiding emerging professionals in the field of live performance.</p>
+
+<div style="height: 0.5em"></div>
+
+<p>For the 2025 edition of <strong>The Listeners Ripple</strong>, the selected curatorial projects and collectives are <strong>Neanche Per Sogno</strong> and <strong>QUOIS</strong>.</p>
+
+<div style="height: 0.5em"></div>
+
+<p>The evening of 13 September, curated by <strong>Neanche Per Sogno</strong>, features performances by <i>Aleksandra Słyż</i>, <i>Ciro Vitiello</i>, and <i>Nocturnerror</i>, exploring sound composition and manipulation across electroacoustic approaches, synthesis techniques, timbral layering, and improvisation.</p>
+
+<p><strong>QUOIS</strong> curates the evening of 14 September, offering a musical journey that challenges conventions: from <i>Marina Boselli</i>’s euphonium concert, highlighting its surprising versatility, to <i>Timothée Quost</i>’s hyper-amplified trumpet experiments, and the fusion of Brazilian folk tradition and jazz sensibilities by the duo <i>BRIGADERA</i> (<i>Beatrice Sberna</i> and <i>Gabriel de Oliveira</i>), joined for the occasion by <i>Sara Guidolin</i>.</p>
+
+
+          <span style="line-height: 1"><br /></span>
+          <p>Free Entry</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- Evento singolo -->
   <div class="evento">
     <div class="desktop-only">
@@ -31,7 +91,7 @@
           <p>Le Garage Lab, Trento</p>
           <div style="height: 0.5em"></div>
           <p>In collaboration with <i>Kohlhaas Records</i> and <i>Le Garage Lab</i></p>
-          <p>Artwork by Martenot</p>
+          <p>Artwork by <i>Martenot</i></p>
           <span style="line-height: 1"><br /></span>
 
           <p>

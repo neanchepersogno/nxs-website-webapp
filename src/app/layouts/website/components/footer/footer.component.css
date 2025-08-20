@@ -262,10 +262,22 @@
 @media (min-width: 769px) {
   .bottom-links-container {
     line-height: 0.8;
+    transform: translateY(5px); /* sposta l'intero box leggermente */
+  }
+
+  .bottom-links a {
+    display: inline-block; /* necessario per translateY */
+    transform: translateY(4px); /* abbassa solo i link */
+  }
+
+  .copy-email {
+    transform: translateY(6px); /* abbassa solo la mail */
   }
 }
 
-
+/* resto del CSS invariato */
 .hidden-footer {
   transform: translateY(100%);
 }
+
+

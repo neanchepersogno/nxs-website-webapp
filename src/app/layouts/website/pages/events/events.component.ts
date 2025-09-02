@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
@@ -11,7 +11,7 @@ export class EventsComponent implements OnInit {
 
   uriAssetsImages: string = environment.uriAssetsImages;
 
-  constructor() {}
+  constructor(private _renderer: Renderer2) {}
 
   ngOnInit(): void {
 
@@ -38,8 +38,40 @@ export class EventsComponent implements OnInit {
     modalImg!.setAttribute('alt', '');
   }
 
+  onToggleSottoEventoTitle(event:any): void {
+    event.preventDefault();
+
+    const titleElement = event.target as HTMLButtonElement;
+
+    const item = titleElement.closest('.lista-item') as HTMLElement | null;
+    if (!item) return;
+
+    const desc = item.querySelector('.sotto-desc') as HTMLElement | null;
+    if (!desc) return;
+
+    const isOpen = item.classList.toggle('aperto');
+
+    if (isOpen) {
+      this._renderer.setAttribute(titleElement, 'disabled', 'true');
+      // Prepara la animación
+      desc.style.maxHeight = '0px';
+      desc.setAttribute('aria-hidden', 'false');
+
+      // Después de un tick, ajusta la altura real
+      setTimeout(() => {
+        desc.style.maxHeight = `${desc.scrollHeight}px`;
+      }, 10);
+    } else {
+      desc.style.maxHeight = '0px';
+      desc.setAttribute('aria-hidden', 'true');
+      console.log("FALSE");
+    }
+
+    this.onCreateDinamicBtn(titleElement);
+
+  }
+
   onToggleSottoEvento(event:any) {
-    console.log('Toggle Sotto Evento:', event);
    const btn = event.target as HTMLElement;
     const item = btn.closest('.lista-item') as HTMLElement | null;
     if (!item) return;
@@ -77,13 +109,11 @@ export class EventsComponent implements OnInit {
       modalBody!.append(dinamicContent);
 
       // Re-attach event listeners
-      const buttons = modalBody!.querySelectorAll('.sotto-toggle');
+      const buttons = modalBody!.querySelectorAll('.evento-title.btn');
       console.log('Buttons found:', buttons.length);
       buttons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-          
-          
-          this.onToggleSottoEvento(e);
+          this.onToggleSottoEventoTitle(e);
         });
       });
     }
@@ -96,6 +126,40 @@ export class EventsComponent implements OnInit {
     const modalRef = document.getElementById("modal-content-image");
     modalRef!.style.display = 'none';
     document.body.style.overflow = "auto";
+  }
+
+  onCreateDinamicBtn(beforeElement: HTMLElement){
+
+    // Validation
+    if (beforeElement.getAttribute('data-dinamico') === 'true') {
+      const parent = this._renderer.parentNode(beforeElement);
+      this._renderer.removeChild(parent, beforeElement);
+      return;
+    }
+
+    if (
+      beforeElement.nextSibling &&
+      (beforeElement.nextSibling as HTMLElement).getAttribute?.('data-dinamico') === 'true'
+    ) {
+      return;
+    }
+
+    // Create dinamic element
+    const nuevoLink = this._renderer.createElement('a');
+    const texto = this._renderer.createText('Less')
+    
+    this._renderer.setAttribute(nuevoLink, 'href', '#');
+    this._renderer.setAttribute(nuevoLink, 'data-dinamico', 'true'); // marca especial
+    this._renderer.addClass(nuevoLink, 'sotto-toggle');
+    this._renderer.listen(nuevoLink, 'click', (e: Event) => {
+      beforeElement.removeAttribute('disabled');
+      this.onToggleSottoEventoTitle(e); // reusa la misma función
+    });
+
+    this._renderer.appendChild(nuevoLink, texto);
+    
+    const parent = this._renderer.parentNode(beforeElement);
+    this._renderer.insertBefore(parent, nuevoLink, this._renderer.nextSibling(beforeElement));
   }
 
 }

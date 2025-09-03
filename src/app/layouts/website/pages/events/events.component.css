@@ -307,7 +307,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
 }
 
 /* usa lo stesso carattere/stile dei titoli piccoli della rassegna */
@@ -319,14 +319,15 @@
 }
 
 /* pulsante More accanto al titolo, allineato a destra */
-.lista-item .sotto-toggle {
-  font-size: 0.7 rem;
+.sotto-toggle {
+  font-size: 0.7rem !important;
   text-decoration: underline;
   color: black;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+  line-height: 1.1 !important;
 }
 
 /* descrizione nascosta per default, apre solo per la voce cliccata */
@@ -440,5 +441,24 @@
   }
 }
 
+.chevron::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 3px;
+  transition: transform 0.5s ease;
+}
 
+.evento-title.btn{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.evento-title.btn.active .chevron::before {
+  transform: rotate(-135deg); /* ▲ */
+}

@@ -306,7 +306,7 @@
 .lista-item .title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 8px;
 }
 
@@ -316,10 +316,11 @@
   /* coerente con il resto */
   margin-bottom: 0;
   line-height: 1.1;
+  margin-right: auto;
 }
 
 /* pulsante More accanto al titolo, allineato a destra */
-.sotto-toggle {
+.lista-item .sotto-toggle {
   font-size: 0.7rem !important;
   text-decoration: underline;
   color: black;
@@ -451,6 +452,7 @@
   transform: rotate(-45deg);
   margin-left: 3px;
   transition: transform 0.5s ease;
+  margin-bottom: 1px;
 }
 
 .evento-title.btn{
@@ -459,6 +461,6 @@
   gap: 8px;
 }
 
-.evento-title.btn.active .chevron::before {
-  transform: rotate(-135deg); /* ▲ */
+.title-row:has(.evento-title.active) .chevron::before {
+  transform: rotate(45deg); /* ▼ */
 }

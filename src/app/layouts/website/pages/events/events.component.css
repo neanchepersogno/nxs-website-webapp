@@ -451,6 +451,7 @@
   transform: rotate(-45deg);
   margin-left: 3px;
   transition: transform 0.5s ease;
+  margin-bottom: 1px;
 }
 
 .evento-title.btn{
@@ -460,5 +461,5 @@
 }
 
 .title-row:has(.evento-title.active) .chevron::before {
-  transform: rotate(135deg); /* ▼ */
+  transform: rotate(45deg); /* ▼ */
 }

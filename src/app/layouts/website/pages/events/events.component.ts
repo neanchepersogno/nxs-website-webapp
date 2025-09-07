@@ -53,6 +53,7 @@ export class EventsComponent implements OnInit {
 
     if (isOpen) {
       this._renderer.setAttribute(titleElement, 'disabled', 'true');
+      this._renderer.addClass(titleElement, 'active');
       // Prepara la animación
       desc.style.maxHeight = '0px';
       desc.setAttribute('aria-hidden', 'false');
@@ -153,6 +154,7 @@ export class EventsComponent implements OnInit {
     this._renderer.addClass(nuevoLink, 'sotto-toggle');
     this._renderer.listen(nuevoLink, 'click', (e: Event) => {
       beforeElement.removeAttribute('disabled');
+      this._renderer.removeClass(beforeElement, 'active');
       this.onToggleSottoEventoTitle(e); // reusa la misma función
     });
 

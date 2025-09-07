@@ -340,6 +340,7 @@
   max-height: 0;
   transition: max-height 1s ease;
   text-align: justify;
+  margin-left: 18px;
 }
 
 /* overlay mobile per leggere i testi premendo l'immagine */

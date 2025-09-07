@@ -52,7 +52,7 @@ export class EventsComponent implements OnInit {
     const isOpen = item.classList.toggle('aperto');
 
     if (isOpen) {
-      this._renderer.setAttribute(titleElement, 'disabled', 'true');
+      // this._renderer.setAttribute(titleElement, 'disabled', 'true');
       this._renderer.addClass(titleElement, 'active');
       // Prepara la animación
       desc.style.maxHeight = '0px';
@@ -63,12 +63,13 @@ export class EventsComponent implements OnInit {
         desc.style.maxHeight = `${desc.scrollHeight}px`;
       }, 10);
     } else {
+      this._renderer.removeClass(titleElement, 'active');
       desc.style.maxHeight = '0px';
       desc.setAttribute('aria-hidden', 'true');
       console.log("FALSE");
     }
 
-    this.onCreateDinamicBtn(titleElement);
+    // this.onCreateDinamicBtn(titleElement);
 
   }
 
@@ -129,39 +130,39 @@ export class EventsComponent implements OnInit {
     document.body.style.overflow = "auto";
   }
 
-  onCreateDinamicBtn(beforeElement: HTMLElement){
+  // onCreateDinamicBtn(beforeElement: HTMLElement){
 
-    // Validation
-    if (beforeElement.getAttribute('data-dinamico') === 'true') {
-      const parent = this._renderer.parentNode(beforeElement);
-      this._renderer.removeChild(parent, beforeElement);
-      return;
-    }
+  //   // Validation
+  //   if (beforeElement.getAttribute('data-dinamico') === 'true') {
+  //     const parent = this._renderer.parentNode(beforeElement);
+  //     this._renderer.removeChild(parent, beforeElement);
+  //     return;
+  //   }
 
-    if (
-      beforeElement.nextSibling &&
-      (beforeElement.nextSibling as HTMLElement).getAttribute?.('data-dinamico') === 'true'
-    ) {
-      return;
-    }
+  //   if (
+  //     beforeElement.nextSibling &&
+  //     (beforeElement.nextSibling as HTMLElement).getAttribute?.('data-dinamico') === 'true'
+  //   ) {
+  //     return;
+  //   }
 
-    // Create dinamic element
-    const nuevoLink = this._renderer.createElement('a');
-    const texto = this._renderer.createText('Less')
+  //   // Create dinamic element
+  //   const nuevoLink = this._renderer.createElement('a');
+  //   const texto = this._renderer.createText('Less')
     
-    this._renderer.setAttribute(nuevoLink, 'href', '#');
-    this._renderer.setAttribute(nuevoLink, 'data-dinamico', 'true'); // marca especial
-    this._renderer.addClass(nuevoLink, 'sotto-toggle');
-    this._renderer.listen(nuevoLink, 'click', (e: Event) => {
-      beforeElement.removeAttribute('disabled');
-      this._renderer.removeClass(beforeElement, 'active');
-      this.onToggleSottoEventoTitle(e); // reusa la misma función
-    });
+  //   this._renderer.setAttribute(nuevoLink, 'href', '#');
+  //   this._renderer.setAttribute(nuevoLink, 'data-dinamico', 'true'); // marca especial
+  //   this._renderer.addClass(nuevoLink, 'sotto-toggle');
+  //   this._renderer.listen(nuevoLink, 'click', (e: Event) => {
+  //     beforeElement.removeAttribute('disabled');
+  //     this._renderer.removeClass(beforeElement, 'active');
+  //     this.onToggleSottoEventoTitle(e); // reusa la misma función
+  //   });
 
-    this._renderer.appendChild(nuevoLink, texto);
+  //   this._renderer.appendChild(nuevoLink, texto);
     
-    const parent = this._renderer.parentNode(beforeElement);
-    this._renderer.insertBefore(parent, nuevoLink, this._renderer.nextSibling(beforeElement));
-  }
+  //   const parent = this._renderer.parentNode(beforeElement);
+  //   this._renderer.insertBefore(parent, nuevoLink, this._renderer.nextSibling(beforeElement));
+  // }
 
 }

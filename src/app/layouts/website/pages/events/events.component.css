@@ -306,7 +306,7 @@
 .lista-item .title-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   gap: 12px;
 }
 
@@ -316,6 +316,7 @@
   /* coerente con il resto */
   margin-bottom: 0;
   line-height: 1.1;
+  margin-right: auto;
 }
 
 /* pulsante More accanto al titolo, allineato a destra */

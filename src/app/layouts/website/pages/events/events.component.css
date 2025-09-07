@@ -321,7 +321,7 @@
 
 /* pulsante More accanto al titolo, allineato a destra */
 .lista-item .sotto-toggle {
-  font-size: 0.7 rem;
+  font-size: 0.7rem !important;
   text-decoration: underline;
   color: black;
   background: none;
@@ -441,5 +441,24 @@
   }
 }
 
+.chevron::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 3px;
+  transition: transform 0.5s ease;
+}
 
+.evento-title.btn{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.title-row:has(.evento-title.active) .chevron::before {
+  transform: rotate(135deg); /* ▼ */
+}

@@ -11,6 +11,7 @@ export const WEBSITE_LAYOUT_ROUTES: Routes = [
       { path: 'releases', loadComponent: () => import('./pages/releases/releases.component').then(m => m.ReleasesComponent), data: { animation: 'ReleasesPage' } },
       { path: 'events', loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent), data: { animation: 'EventsPage' } },
       { path: 'mixtape-archive', loadComponent: () => import('./pages/mixtape-archive/mixtape-archive.component').then(m => m.MixtapeArchiveComponent), data: { animation: 'MixtapeArchivePage' } },
+      { path: 'moreismoreismore', loadComponent: () => import('./pages/moreismoreismore/moreismoreismore.component').then(m => m.MoreismoreismoreComponent), data: { animation: 'MoreIsMoreIsMorePage' } },
     ],
   },
 ];

@@ -31,10 +31,12 @@
           href="https://nxsrecords.bandcamp.com/merch"
           target="_blank"
           rel="noopener noreferrer"
-          >Buy</a
-        >
+          >Buy</a>
+          
+          <a [routerLink]="['moreismoreismore']" routerLinkActive="active">MORE IS MORE IS MORE</a>
       </div>
     </div>
+
 
     <div class="copy-email" (click)="onCopyEmail()">
       {{ emailCopy }}

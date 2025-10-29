@@ -3,3 +3,166 @@
   margin: 20px auto 60px; /* margine superiore ridotto */
   padding: 25px;
 }
+.mobile-header {
+  display: none;
+  padding: 5px 5px 0;
+}
+
+.mobile-header a {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+}
+
+.page-content {
+  max-width: 1000px;
+  margin: 20px auto 60px; /* margine superiore ridotto */
+  padding: 25px;
+}
+
+.moreismoreismore-text {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  text-align: justify;
+  width: 100%;
+}
+
+.moreshow {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.moreshow img {
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+  border: none;
+  order: 1;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.moreshow img:hover {
+  transform: scale(1.05);
+}
+
+.moreshow-info {
+  flex: 1;
+  order: 1;
+}
+
+.moreshow-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.moreshow-text {
+  font-size: 0.7rem;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  text-align: justify;
+}
+
+.moreshow-text p {
+  margin-bottom: 12px;
+}
+
+.moreshow-link a {
+  color: black;
+  text-decoration: underline;
+  font-size: 0.7rem;
+}
+
+/* MODAL STYLES */
+.modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  cursor: zoom-out;
+  object-fit: contain;
+}
+
+.boxed {
+  display: inline-block;
+  padding: 2px 4px;
+  background: transparent;
+  border: 1px solid #000;
+  border-radius: 4px; /* opzionale */
+  line-height: 1;
+  font-size: 0.7rem;
+  margin: 0px 2px 0px 0; /* <-- aggiunge spazio fra i box */
+}
+
+
+
+/* MOBILE STYLES */
+@media (max-width: 768px) {
+  .mobile-header {
+    display: none;
+  }
+
+  .page-content {
+    max-width: 100%;
+    margin: 0px auto 0px; /* margine superiore ancora più piccolo su mobile */
+    padding: 5px;
+  }
+
+  .moreshow {
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 0;
+    margin-bottom: 40px;
+  }
+
+  .moreshow img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    order: 0;
+    box-shadow: none;
+  }
+
+  .moreshow-info {
+    width: 100%;
+    margin-top: 5px;
+    order: 0;
+    padding: 0 0px;
+  }
+
+  .moreshow-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
+  .moreshow-text {
+    font-size: 0.7rem;
+    text-align: left;
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+
+  .moreshow-link a {
+    font-size: 0.7rem;
+  }
+}

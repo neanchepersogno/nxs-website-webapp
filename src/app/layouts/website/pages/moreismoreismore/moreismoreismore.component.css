@@ -1,0 +1,5 @@
+.page-content {
+  max-width: 1000px;
+  margin: 20px auto 60px; /* margine superiore ridotto */
+  padding: 25px;
+}

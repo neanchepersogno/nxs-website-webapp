@@ -1,4 +1,16 @@
 /* --- FOOTER --- */
+.floating-footer::before {
+  content: "";
+  position: absolute;
+  top: -10px; /* regola l’altezza della sfumatura */
+  left: 0;
+  width: 100%;
+  height: 10px; /* quanto deve essere alta la sfumatura */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+  pointer-events: none; /* evita di bloccare clic */
+  z-index: 1;
+}
+
 .floating-footer {
   position: fixed;
   bottom: 25px;

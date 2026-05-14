@@ -3,7 +3,7 @@
   min-height: 100vh;
 
   /* Cambi il colore qui una sola volta */
-  --shadow-color: 120, 90, 255;
+  --shadow-color: 20, 20, 20;
 }
 
 .home-featured-link {

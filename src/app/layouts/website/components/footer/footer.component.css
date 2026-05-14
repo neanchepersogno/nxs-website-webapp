@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 60px;
+  padding: 25px 50px;
   z-index: 9998;
   transition: transform 0.8s ease;
   transform: translateZ(0);

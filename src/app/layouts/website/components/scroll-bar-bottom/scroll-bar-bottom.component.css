@@ -1,4 +1,3 @@
-
 /* --- SCROLL BAR --- */
 .scroll-bar {
   width: 100%;
@@ -28,9 +27,8 @@
   line-height: 25px;
 }
 
-
 .scroll-content {
-  display: inline-block;
+  display: flex;
   white-space: nowrap;
 }
 
@@ -41,10 +39,6 @@
 }
 
 @keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }

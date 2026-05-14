@@ -23,6 +23,7 @@
   padding: 30px 60px;
   z-index: 9998;
   transition: transform 0.8s ease;
+  transform: translateZ(0);
 }
 
 .bottom-logo-container {
@@ -71,7 +72,7 @@
   font-family: Helvetica, Arial, sans-serif;
   text-align: left;
   line-height: 0.8;
-  max-width: 360px;
+  max-width: 280px;
   gap: 12px;
 }
 

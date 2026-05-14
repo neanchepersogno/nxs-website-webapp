@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { TabsModule } from 'primeng/tabs';
+import { RouterLink } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TabsModule],
+  imports: [RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+  uriAssetsImages: string = environment.uriAssetsImages;
 }

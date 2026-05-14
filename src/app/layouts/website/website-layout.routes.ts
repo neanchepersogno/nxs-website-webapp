@@ -6,7 +6,7 @@ export const WEBSITE_LAYOUT_ROUTES: Routes = [
     path: '',
     component: WebsiteLayoutComponent,
     children: [
-      { path: '', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) },
+      { path: '', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent), data: { animation: 'HomePage' } },
       { path: 'about', loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),  data: { animation: 'AboutPage' } },
       { path: 'releases', loadComponent: () => import('./pages/releases/releases.component').then(m => m.ReleasesComponent), data: { animation: 'ReleasesPage' } },
       { path: 'events', loadComponent: () => import('./pages/events/events.component').then(m => m.EventsComponent), data: { animation: 'EventsPage' } },

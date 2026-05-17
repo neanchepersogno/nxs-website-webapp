@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, HostListener, OnInit, signal } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormspreeService } from '../../shared/services/formspree.service';
 import { Message } from 'primeng/message';
@@ -16,67 +16,66 @@ import { environment } from '../../../../../environments/environment';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent implements OnInit {
-
   uriAssetsImages: string = environment.uriAssetsImages;
   emailCopy: string = "neanchepersognorecords@gmail.com";
   isHidden = false;
   private lastScrollTop = 0;
 
-  // Models
-  messageForm:IMessageForm = {} as IMessageForm
-
-  // Form validation
+  messageForm: IMessageForm = {} as IMessageForm;
   fgNewsletter: FormGroup;
   isLoadingForm: boolean = false;
   visibleMessageForm = signal(false);
 
-  constructor(private _formsspreeService: FormspreeService) {
-
+  constructor(private _formsspreeService: FormspreeService, private router: Router) {
     this.fgNewsletter = new FormGroup({
       email: new FormBuilder().control('', [Validators.required, Validators.email])
     });
-
   }
+
   ngOnInit(): void {
     this.visibleMessageForm.set(false);
   }
 
-@HostListener('window:scroll', [])
-onWindowScroll() {
-  const currentScroll = window.scrollY || document.documentElement.scrollTop;
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-
-  // Se la pagina non è scrollabile, il footer resta sempre visibile
-  if (maxScroll <= 0) {
-    this.isHidden = false;
-    return;
+  isHome(): boolean {
+    return this.router.url === '/';
   }
 
-  if (currentScroll > this.lastScrollTop) {
-    // Scroll in giù → nascondi
-    this.isHidden = true;
-  } else if (currentScroll < this.lastScrollTop) {
-    // Scroll in su → mostra SOLO se non sei in fondo
-    if (currentScroll < maxScroll - 50) { 
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    // Su mobile in home page il footer resta sempre visibile
+    if (window.innerWidth <= 768 && this.isHome()) {
       this.isHidden = false;
+      return;
     }
+
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+    if (maxScroll <= 0) {
+      this.isHidden = false;
+      return;
+    }
+
+    if (currentScroll > this.lastScrollTop) {
+      this.isHidden = true;
+    } else if (currentScroll < this.lastScrollTop) {
+      if (currentScroll < maxScroll - 50) {
+        this.isHidden = false;
+      }
+    }
+
+    this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
 
-  this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-}
-
-
-  // Functions
-  onSubmitForm(){
+  onSubmitForm() {
     this.isLoadingForm = true;
     this.visibleMessageForm.set(false);
     if (this.fgNewsletter.valid) {
       const data = new FormData();
       data.append('email', this.fgNewsletter.value.email);
-
       this._formsspreeService.sendFormData(data).subscribe({
         next: (response) => {
-          console.log("ok: ", response)
+          console.log("ok: ", response);
           this.fgNewsletter.reset();
           this.isLoadingForm = false;
           this.messageForm = { severity: 'success', message: 'Ti sei iscritto con successo!' };
@@ -89,19 +88,16 @@ onWindowScroll() {
           this.visibleMessageForm.set(true);
         }
       });
-
     }
-
     return;
   }
 
   onCopyEmail() {
     const email = "neanchepersognorecords@gmail.com";
-   navigator.clipboard.writeText(email).then(() => {
-     this.emailCopy = "Copied to clipboard!";
-   }).catch(err => {
-     console.error('Failed to copy email: ', err);
-   });
+    navigator.clipboard.writeText(email).then(() => {
+      this.emailCopy = "Copied to clipboard!";
+    }).catch(err => {
+      console.error('Failed to copy email: ', err);
+    });
   }
-
 }

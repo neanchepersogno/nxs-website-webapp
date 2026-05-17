@@ -2,12 +2,12 @@
 .floating-footer::before {
   content: "";
   position: absolute;
-  top: -10px; /* regola l’altezza della sfumatura */
+  top: -10px;
   left: 0;
   width: 100%;
-  height: 0px; /* quanto deve essere alta la sfumatura */
+  height: 0px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
-  pointer-events: none; /* evita di bloccare clic */
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -110,10 +110,28 @@
   cursor: pointer;
   text-decoration: underline;
   font-size: 0.7rem;
-  margin-bottom: 10px;
   color: rgb(120, 120, 120);
   line-height: 0.8;
+}
+
+.copy-email-mobile {
+  display: none;
+}
+
+.copy-email-desktop {
+  display: block;
+  margin-bottom: 10px;
   text-align: left;
+}
+
+.newsletter-title {
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: rgb(120, 120, 120);
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 0.8;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .newsletter-wrapper {
@@ -153,41 +171,57 @@
   text-decoration: underline;
 }
 
-/* --- STILI RESPONSIVE --- */
+/* desktop: mostra solo la riga unificata */
+.row-desktop-only   { display: flex; }
+.row-mobile-main    { display: none; }
+.row-mobile-secondary { display: none; }
+
+/* --- DESKTOP --- */
+@media (min-width: 769px) {
+  .bottom-links-container {
+    line-height: 0.8;
+    transform: translateY(5px);
+  }
+
+  .bottom-links a {
+    display: inline-block;
+    transform: translateY(4px);
+  }
+
+  .copy-email {
+    transform: translateY(6px);
+  }
+
+  .newsletter-wrapper {
+    flex-direction: column;
+  }
+
+  .newsletter-title {
+    margin-bottom: 4px;
+  }
+}
+
+/* --- MOBILE --- */
 @media (max-width: 768px) {
-  /* --- FOOTER MOBILE --- */
   .floating-footer {
     bottom: 25px;
-    padding: 10px 10px;
-    flex-direction: row;
+    padding: 16px 10px;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
+    gap: 16px;
     width: 100%;
   }
 
   .bottom-logo-container {
-    transform: translateX(15px); /* positivo = verso destra, negativo = verso sinistra */
-  }
-  .bottom-links-container {
-    max-width: 45vw;
-    display: flex;
-    flex-direction: column;
-    line-height: 0.8;
-    transform: translateX(15px) translateY(5px); ; 
-  }
-
-  .bottom-logo-container {
-    margin-right: auto;
-    justify-content: center;
-  }
-
-  .bottom-links-container {
-    margin-left: auto;
+    transform: none;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
   }
 
   .bottom-logo {
-    max-width: 140px;
+    max-width: 180px;
   }
 
   .logo-credit {
@@ -196,101 +230,108 @@
     text-transform: none;
     margin-top: 4px;
     line-height: 1.2;
-    text-align: left;
+    text-align: center;
+  }
+
+  .bottom-links-container {
+    transform: none;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+    align-items: center;
+    gap: 6px;
   }
 
   .bottom-links-row {
-    justify-content: flex-start;
-    gap: 12px;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    width: 100%;
     line-height: 0.8;
   }
 
-  .copy-email {
-    font-size: 0.65rem;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    line-height: 0.8;
-    text-align: left;
+  .row-desktop-only    { display: none; }
+  .row-mobile-main     { display: flex; }
+  .row-mobile-secondary { display: flex; }
+
+  .row-mobile-secondary {
+    margin-top: 4px;
+    gap: 10px 20px;
+  }
+
+  .copy-email-mobile {
+    display: inline;
+  }
+
+  .copy-email-desktop {
+    display: none;
   }
 
   .newsletter-wrapper {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
     width: 100%;
-    line-height: 0.8;
+    justify-content: center;
     text-align: left;
   }
 
+  .newsletter-title {
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+  }
+
   .subscribe-box {
-    justify-content: flex-start;
+    justify-content: center;
     gap: 0px;
     flex-wrap: nowrap;
   }
 
   .subscribe-box input[type="email"] {
-    width: 140px;
+    width: 120px;
     padding: 2px 6px;
     font-size: 0.65rem;
   }
 
   .subscribe-box button {
     font-size: 0.65rem;
-    padding: 4px 10px;
+    padding: 4px 6px;
   }
 
-  /* --- BORDI CONTENUTI DINAMICI SU MOBILE --- */
   #dynamic-content-container {
-    padding: 5px; /* <-- qui puoi modificare lo spazio dai bordi dello schermo */
-    margin: 5; /* contenitore prende tutta la larghezza disponibile */
+    padding: 5px;
+    margin: 5px;
   }
 
   #dynamic-content-container * {
-    border: none; /* <-- rimuove eventuali bordi dai figli */
+    border: none;
   }
 }
 
 @media (max-width: 580px) {
-  .bottom-logo-container {
-    max-width: 100%;
-    margin: 0;
-  }
-  .subscribe-box {
-    justify-content: space-between !important;
-  }
-  .bottom-links-container {
-    max-width: 52vw;
-    margin-left: auto !important;
-    gap: 6px;
-  }
-  .bottom-links-row {
-    gap: 10px 30px !important;
-  }
   .floating-footer {
     gap: 0.75rem;
-    padding: 10px !important;
-    justify-content: space-between;
+    padding: 10px;
+    justify-content: center;
   }
-}
 
-/* --- MODIFICHE GENERALI DESKTOP --- */
-@media (min-width: 769px) {
   .bottom-links-container {
-    line-height: 0.8;
-    transform: translateY(5px); /* sposta l'intero box leggermente */
+    max-width: 100%;
+    margin: 0 auto;
   }
 
-  .bottom-links a {
-    display: inline-block; /* necessario per translateY */
-    transform: translateY(4px); /* abbassa solo i link */
+  .bottom-links-row {
+    gap: 10px 30px;
   }
 
-  .copy-email {
-    transform: translateY(6px); /* abbassa solo la mail */
+  .subscribe-box {
+    justify-content: center;
   }
 }
 
-/* resto del CSS invariato */
 .hidden-footer {
   transform: translateY(100%);
 }
-
 

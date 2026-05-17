@@ -13,38 +13,56 @@
         href="https://www.muah.studio"
         target="_blank"
         rel="noopener noreferrer"
-        >Muah! Studio</a
-      >
+      >Muah! Studio</a>
     </div>
   </div>
 
   <div class="bottom-links-container">
     <div class="bottom-links">
-      <div class="bottom-links-row">
+
+      <!-- RIGA DESKTOP: tutti i link insieme -->
+      <div class="bottom-links-row row-desktop-only">
         <a [routerLink]="['about']" routerLinkActive="active">About</a>
         <a [routerLink]="['releases']" routerLinkActive="active">Releases</a>
         <a [routerLink]="['events']" routerLinkActive="active">Events</a>
-        <a [routerLink]="['mixtape-archive']" routerLinkActive="active"
-          >Mixtape Archive</a
-        >
+        <a [routerLink]="['mixtape-archive']" routerLinkActive="active">Mixtape Archive</a>
         <a
           href="https://nxsrecords.bandcamp.com/merch"
           target="_blank"
           rel="noopener noreferrer"
-          >Buy</a>
-          
+        >Buy</a>
         <a [routerLink]="['moreismoreismore']" routerLinkActive="active">MORE IS MORE IS MORE</a>
       </div>
+
+      <!-- RIGA 1 MOBILE: About, Releases, Events, Mixtape Archive, Buy -->
+      <div class="bottom-links-row row-mobile-main">
+        <a [routerLink]="['about']" routerLinkActive="active">About</a>
+        <a [routerLink]="['releases']" routerLinkActive="active">Releases</a>
+        <a [routerLink]="['events']" routerLinkActive="active">Events</a>
+        <a [routerLink]="['mixtape-archive']" routerLinkActive="active">Mixtape Archive</a>
+        <a
+          href="https://nxsrecords.bandcamp.com/merch"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Buy</a>
+      </div>
+
+      <!-- RIGA 2 MOBILE: MORE IS MORE IS MORE + email -->
+      <div class="bottom-links-row row-mobile-secondary">
+        <a [routerLink]="['moreismoreismore']" routerLinkActive="active">MORE IS MORE IS MORE</a>
+        <span class="copy-email copy-email-mobile" (click)="onCopyEmail()">{{ emailCopy }}</span>
+      </div>
+
     </div>
 
-
-    <div class="copy-email" (click)="onCopyEmail()">
+    <!-- email originale: visibile solo su desktop -->
+    <div class="copy-email copy-email-desktop" (click)="onCopyEmail()">
       {{ emailCopy }}
     </div>
 
-    <p class="newsletter-title">Newsletter:</p>
-
+    <!-- RIGA 3: Newsletter + box + subscribe sulla stessa riga -->
     <div class="newsletter-wrapper">
+      <p class="newsletter-title">Newsletter:</p>
       <form
         [formGroup]="fgNewsletter"
         (submit)="onSubmitForm()"
@@ -59,15 +77,13 @@
           placeholder="Email address"
           required
         />
-
         @if (isLoadingForm) {
-        <button type="submit">Sending...</button>
+          <button type="submit">Sending...</button>
         } @else {
-        <button type="submit" [disabled]="fgNewsletter.invalid">
-          Subscribe
-        </button>
+          <button type="submit" [disabled]="fgNewsletter.invalid">
+            Subscribe
+          </button>
         }
-
         <span
           id="form-status"
           style="
@@ -80,7 +96,7 @@
       <div class="messagge-form">
         <div class="card flex flex-col">
           @if (visibleMessageForm()) {
-          <p-message [life]="3000" closable [severity]="messageForm.severity">{{ messageForm.message }}</p-message>
+            <p-message [life]="3000" closable [severity]="messageForm.severity">{{ messageForm.message }}</p-message>
           }
         </div>
       </div>

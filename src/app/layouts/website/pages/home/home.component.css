@@ -2,8 +2,11 @@
   display: block;
   min-height: 100vh;
 
-  /* Cambi il colore qui una sola volta */
   --shadow-color: 20, 20, 20;
+}
+
+.home-mobile-logo {
+  display: none;
 }
 
 .home-featured-link {
@@ -39,6 +42,41 @@
     left: 0;
     margin: 0 auto;
     bottom: 21rem;
+  }
+
+  .home-mobile-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .home-mobile-logo-img {
+    max-width: 180px;
+    height: auto;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .home-mobile-logo-credit {
+    margin-top: 4px;
+    font-size: 0.55rem;
+    color: #c0c0c0;
+    font-family: Helvetica, Arial, sans-serif;
+    text-transform: none;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .home-mobile-logo-credit a {
+    color: #c0c0c0;
+    text-decoration: none;
   }
 }
 

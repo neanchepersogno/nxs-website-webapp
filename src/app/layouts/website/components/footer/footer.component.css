@@ -201,6 +201,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .hide-logo-home-mobile {
+    display: none;
+  }
+}
+
 /* --- MOBILE --- */
 @media (max-width: 768px) {
   .floating-footer {

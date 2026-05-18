@@ -2,8 +2,9 @@
   <img [src]="uriAssetsImages + '/logo-main.png'" alt="Logo Neanche Per Sogno" />
 </div>
 
-<main [@routeAnimation]="prepareRoute(routerOutlet)" class="main-content">
+<main [@routeAnimation]="prepareRoute(routerOutlet)" class="main-content" [class.with-header]="!isHome()">
   <router-outlet #routerOutlet="outlet"></router-outlet>
 </main>
+<app-header></app-header>
 <app-footer></app-footer>
 <app-scroll-bar-bottom></app-scroll-bar-bottom>

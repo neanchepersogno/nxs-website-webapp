@@ -1,0 +1,1 @@
+import{Ka as t}from"./chunk-7QXTCEWD.js";var n=class e{static \u0275fac=function(o){return new(o||e)};static \u0275cmp=t({type:e,selectors:[["app-home"]],decls:0,vars:0,template:function(o,m){},styles:["[_nghost-%COMP%]{display:block;min-height:100vh}"]})};export{n as HomeComponent};

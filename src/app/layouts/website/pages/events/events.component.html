@@ -1343,9 +1343,12 @@ Corgiat’s practice is rooted in the search for form within impermanence: a mus
 <!-- Modal per testo mobile -->
 <div id="modal-content-image" class="modal">
   <div class="modal-image-header">
-    <span id="close-modal-content-image" (click)="onCloseModalContentImage()"
-      >&times;</span
-    >
+    <img
+      [src]="uriAssetsImages + '/logo-main2.png'"
+      class="modal-header-logo"
+      (click)="onCloseModalContentImage()"
+      alt="Chiudi"
+    />
   </div>
   <div class="box-content"></div>
 </div>

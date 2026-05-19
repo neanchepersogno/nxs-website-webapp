@@ -26,42 +26,6 @@
   transform: translateZ(0);
 }
 
-.bottom-logo-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.bottom-logo {
-  max-width: 220px;
-  height: auto;
-  opacity: 1;
-  user-select: none;
-  cursor: pointer;
-}
-
-.logo-credit {
-  margin-top: 6px;
-  font-size: 0.6rem;
-  color: #ccc;
-  font-family: Helvetica, Arial, sans-serif;
-  text-transform: none;
-  line-height: 1.2;
-  text-align: left;
-}
-
-.logo-credit a {
-  color: #ccc;
-  text-decoration: none;
-}
-
-.logo-credit a:hover {
-  text-decoration: underline;
-}
-
 .bottom-links-container {
   display: flex;
   flex-direction: column;
@@ -201,14 +165,48 @@
   }
 }
 
-@media (max-width: 768px) {
-  .hide-logo-home-mobile {
-    display: none;
-  }
+.bottom-logo-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.bottom-logo {
+  max-width: 220px;
+  height: auto;
+  opacity: 1;
+  user-select: none;
+  cursor: pointer;
+}
+
+.logo-credit {
+  margin-top: 6px;
+  font-size: 0.6rem;
+  color: #ccc;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: none;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.logo-credit a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.logo-credit a:hover {
+  text-decoration: underline;
 }
 
 /* --- MOBILE --- */
 @media (max-width: 768px) {
+  .bottom-logo-container {
+    display: none;
+  }
+
   .floating-footer {
     bottom: 25px;
     padding: 16px 10px;
@@ -219,27 +217,7 @@
     width: 100%;
   }
 
-  .bottom-logo-container {
-    transform: none;
-    margin: 0 auto;
-    align-items: center;
-    text-align: center;
-  }
-
-  .bottom-logo {
-    max-width: 180px;
-  }
-
-  .logo-credit {
-    font-size: 0.55rem;
-    color: #c0c0c0;
-    text-transform: none;
-    margin-top: 4px;
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  .bottom-links-container {
+.bottom-links-container {
     transform: none;
     margin: 0 auto;
     max-width: 100%;

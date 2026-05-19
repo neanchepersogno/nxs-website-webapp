@@ -13,7 +13,8 @@
   z-index: 9997;
   max-width: 280px;
   text-decoration: none;
-  animation: homeEnter 800ms ease-out;
+  opacity: 0;
+  animation: homeEnter 800ms ease-out forwards;
 }
 
 @keyframes homeEnter {
@@ -60,11 +61,12 @@
     margin: 0;
     right: unset;
     bottom: unset;
-    animation: homeEnterMobile 800ms ease-out;
+    animation: homeEnterMobile 800ms ease-out forwards;
   }
 
   .home-mobile-logo {
-    animation: homeLogoEnter 800ms ease-out;
+    opacity: 0;
+    animation: homeLogoEnter 800ms ease-out forwards;
   }
 
   .home-mobile-logo {

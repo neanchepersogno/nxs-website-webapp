@@ -55,8 +55,8 @@
   .home-featured-link {
     position: fixed;
     max-width: 300px;
-    width: 300px;
-    top: 55%;
+    width: 250px;
+    top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
@@ -75,7 +75,7 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 80px;
+    top: 50px;
     left: 0;
     right: 0;
     z-index: 9999;
@@ -84,7 +84,7 @@
   }
 
   .home-mobile-logo-img {
-    max-width: 320px;
+    max-width: 300px;
     height: auto;
     user-select: none;
     cursor: pointer;
@@ -108,6 +108,6 @@
 
 @keyframes pulse {
   0%   { box-shadow: 0 0 8px rgba(var(--shadow-color), 0.3); }
-  50%  { box-shadow: 0 0 25px rgba(var(--shadow-color), 1); }
+  50%  { box-shadow: 0 0 15px rgba(var(--shadow-color), 0.5); }
   100% { box-shadow: 0 0 8px rgba(var(--shadow-color), 0.3); }
 }

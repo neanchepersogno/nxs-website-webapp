@@ -54,8 +54,9 @@
 @media (max-width: 768px) {
   .home-featured-link {
     position: fixed;
-    max-width: 250px;
-    top: 50%;
+    max-width: 300px;
+    width: 300px;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
@@ -74,7 +75,7 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 20px;
+    top: 80px;
     left: 0;
     right: 0;
     z-index: 9999;
@@ -83,7 +84,7 @@
   }
 
   .home-mobile-logo-img {
-    max-width: 180px;
+    max-width: 320px;
     height: auto;
     user-select: none;
     cursor: pointer;

@@ -250,14 +250,6 @@
   right: 0;
 }
 
-#close-modal-content-image {
-  cursor: pointer;
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
-  font-size: 44px;
-  color: black;
-}
 /* End modal content image */
 
 /* Modal immagine (desktop) */
@@ -421,12 +413,14 @@
   }
 }
 #close-modal-content-image {
-  font-size: fixed; /* dimensione della X */
   cursor: pointer;
-  color: #333;
   position: absolute;
-  top: -5px;
+  top: 8px;
   right: 10px;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
 }
 #modal-content-image .box-content {
   max-width: 600px;          /* larghezza massima leggibile */

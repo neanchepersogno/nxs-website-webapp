@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-website-layout',
   standalone: true,
-  imports: [FooterComponent, HeaderComponent, ScrollBarBottomComponent, CommonModule, RouterOutlet, ScrollBarBottomComponent],
+  imports: [FooterComponent, HeaderComponent, ScrollBarBottomComponent, CommonModule, RouterOutlet, RouterLink],
   templateUrl: './website-layout.component.html',
   styleUrl: './website-layout.component.css',
   animations: [

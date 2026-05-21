@@ -1,4 +1,3 @@
-/* --- SCROLL BAR --- */
 .scroll-bar {
   width: 100%;
   height: 25px;
@@ -10,35 +9,41 @@
   left: 0;
   z-index: 9999;
 }
-
 .scroll-bar.bottom {
   bottom: 0;
 }
-
 .scroll-bar span {
   color: #fff;
   font-size: 0.8rem;
   font-weight: bold;
   white-space: nowrap;
-  padding-right: 2rem;
+  padding-right: 1.5rem;
 }
-
 .scroll-bar a {
-  line-height: 25px;
+  color: white;
+  text-decoration: none;
+  
+  align-items: center;
+  height: 25px;
 }
-
 .scroll-content {
   display: flex;
-  white-space: nowrap;
-}
-
-.scroll-wrapper {
-  display: inline-block;
+  align-items: center;
   white-space: nowrap;
   animation: scroll-left 60s linear infinite;
 }
-
+.scroll-wrapper {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.scroll-logo {
+  height: 25px;
+  width: auto;
+  margin: 0 1.5rem;
+}
 @keyframes scroll-left {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-50%); }
 }

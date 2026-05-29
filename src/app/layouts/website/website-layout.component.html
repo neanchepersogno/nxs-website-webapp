@@ -12,6 +12,7 @@
       <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">Muah! Studio</a>
     </div>
   </div>
+
   <a routerLink="/releases" class="home-featured-link">
     <img
       [src]="uriAssetsImages + '/aposematic-cover.png'"
@@ -19,6 +20,7 @@
       class="home-featured-img"
     />
   </a>
+
 }
 
 <main [@routeAnimation]="prepareRoute(routerOutlet)" class="main-content" [class.with-header]="!isHome()">

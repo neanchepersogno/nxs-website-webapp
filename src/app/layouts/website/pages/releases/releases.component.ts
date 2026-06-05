@@ -20,7 +20,7 @@ export class ReleasesComponent implements OnInit, OnDestroy {
     ],
     [
       { src: `${environment.uriAssetsImages}/gu-lefka-split.png`, alt: 'Guglielmo Diana / Lefka – Split' },
-      { src: `${environment.uriAssetsImages}/gu-lefka-split.png`, alt: 'Guglielmo Diana / Lefka – Split (back)' },
+      { src: `${environment.uriAssetsImages}/nxs003-retro.png`, alt: 'Guglielmo Diana / Lefka – Split (back)' },
     ],
     [
       { src: `${environment.uriAssetsImages}/face-shopping-rmx.png`, alt: 'Faceshopping RMX' },
@@ -28,7 +28,7 @@ export class ReleasesComponent implements OnInit, OnDestroy {
     ],
     [
       { src: `${environment.uriAssetsImages}/sfilate-spaziali.png`, alt: 'Sfilate Spaziali' },
-      { src: `${environment.uriAssetsImages}/sfilate-spaziali.png`, alt: 'Sfilate Spaziali (back)' },
+      { src: `${environment.uriAssetsImages}/ss-retro.png`, alt: 'Sfilate Spaziali (back)' },
     ],
   ];
 

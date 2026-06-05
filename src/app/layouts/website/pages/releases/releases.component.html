@@ -2,11 +2,21 @@
    <!-- -->
   
   <div class="release">
-    <img
-      [src]="uriAssetsImages + '/aposematic-cover.png'"
-      alt="Martenot - Aposematic"
-      class="zoomable"
-    />
+    <div class="flip-card">
+      <div class="flip-card-inner" [class.flipped]="flippedStates[0]">
+        <div class="flip-card-front">
+          <img [src]="imageGroups[0][0].src" [alt]="imageGroups[0][0].alt" class="zoomable" />
+        </div>
+        <div class="flip-card-back">
+          <img [src]="imageGroups[0][1].src" [alt]="imageGroups[0][1].alt" class="zoomable" />
+        </div>
+      </div>
+      <button class="flip-btn" (click)="onFlipToggle(0)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
     <div class="release-info">
       <div class="release-title">Martenot - Aposematic</div>
       <div class="release-text">
@@ -40,11 +50,21 @@
   
   <!-- -->
   <div class="release">
-    <img
-      [src]="uriAssetsImages + '/gu-lefka-split.png'"
-      alt="Gu / Lefka – Split"
-      class="zoomable"
-    />
+    <div class="flip-card">
+      <div class="flip-card-inner" [class.flipped]="flippedStates[1]">
+        <div class="flip-card-front">
+          <img [src]="imageGroups[1][0].src" [alt]="imageGroups[1][0].alt" class="zoomable" />
+        </div>
+        <div class="flip-card-back">
+          <img [src]="imageGroups[1][1].src" [alt]="imageGroups[1][1].alt" class="zoomable" />
+        </div>
+      </div>
+      <button class="flip-btn" (click)="onFlipToggle(1)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
     <div class="release-info">
       <div class="release-title">Guglielmo Diana / Lefka – Split</div>
       <div class="release-text">
@@ -94,11 +114,21 @@
   </div>
 
   <div class="release">
-    <img
-      [src]="uriAssetsImages + '/face-shopping-rmx.png'"
-      alt="Faceshopping RMX"
-      class="zoomable"
-    />
+    <div class="flip-card">
+      <div class="flip-card-inner" [class.flipped]="flippedStates[2]">
+        <div class="flip-card-front">
+          <img [src]="imageGroups[2][0].src" [alt]="imageGroups[2][0].alt" class="zoomable" />
+        </div>
+        <div class="flip-card-back">
+          <img [src]="imageGroups[2][1].src" [alt]="imageGroups[2][1].alt" class="zoomable" />
+        </div>
+      </div>
+      <button class="flip-btn" (click)="onFlipToggle(2)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
     <div class="release-info">
       <div class="release-title">Martenot - Faceshopping RMX</div>
       <div class="release-text">
@@ -147,11 +177,21 @@
   </div>
 
   <div class="release">
-    <img
-      [src]="uriAssetsImages + '/sfilate-spaziali.png'"
-      alt="Sfilate Spaziali"
-      class="zoomable"
-    />
+    <div class="flip-card">
+      <div class="flip-card-inner" [class.flipped]="flippedStates[3]">
+        <div class="flip-card-front">
+          <img [src]="imageGroups[3][0].src" [alt]="imageGroups[3][0].alt" class="zoomable" />
+        </div>
+        <div class="flip-card-back">
+          <img [src]="imageGroups[3][1].src" [alt]="imageGroups[3][1].alt" class="zoomable" />
+        </div>
+      </div>
+      <button class="flip-btn" (click)="onFlipToggle(3)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
     <div class="release-info">
       <div class="release-title">Martenot - Sfilate Spaziali</div>
       <div class="release-text">

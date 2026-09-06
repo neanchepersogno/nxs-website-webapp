@@ -15,6 +15,10 @@ export class ReleasesComponent implements OnInit, OnDestroy {
 
   imageGroups: CoverImage[][] = [
     [
+      { src: `${environment.uriAssetsImages}/corgiat-front.png`, alt: 'Corgiat - Almost There, Almost Broken' },
+      { src: `${environment.uriAssetsImages}/corgiat-retro.png`, alt: 'Corgiat - Almost There, Almost Broken (back)' },
+    ],
+    [
       { src: `${environment.uriAssetsImages}/aposematic-cover.png`, alt: 'Martenot - Aposematic' },
       { src: `${environment.uriAssetsImages}/APOSEMATIC-COVER-RETRO2-DEF.png`, alt: 'Martenot - Aposematic (back)' },
     ],

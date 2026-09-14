@@ -2,7 +2,7 @@
 /* --- HOME FIXED ELEMENTS --- */
 .home-featured-link {
   position: fixed;
-  bottom: 15rem;
+  bottom: 14rem;
   right: 50px;
   display: block;
   z-index: 9997;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -22,11 +22,34 @@ import { environment } from '../../../environments/environment';
     ])
   ]
 })
-export class WebsiteLayoutComponent {
+export class WebsiteLayoutComponent implements OnInit, OnDestroy {
 
   uriAssetsImages: string = environment.uriAssetsImages;
 
+  featuredFlipped = false;
+  private featuredFlipInterval?: ReturnType<typeof setInterval>;
+
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.startFeaturedFlipInterval();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.featuredFlipInterval);
+  }
+
+  private startFeaturedFlipInterval(): void {
+    clearInterval(this.featuredFlipInterval);
+    this.featuredFlipInterval = setInterval(() => {
+      this.featuredFlipped = !this.featuredFlipped;
+    }, 7000);
+  }
+
+  onFeaturedFlipToggle(): void {
+    this.featuredFlipped = !this.featuredFlipped;
+    this.startFeaturedFlipInterval();
+  }
 
   isHome(): boolean {
     return this.router.url.split('?')[0] === '/';

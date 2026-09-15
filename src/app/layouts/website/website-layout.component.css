@@ -2,7 +2,7 @@
 /* --- HOME FIXED ELEMENTS --- */
 .home-featured-link {
   position: fixed;
-  bottom: 15rem;
+  bottom: 14rem;
   right: 50px;
   display: block;
   z-index: 9997;
@@ -41,6 +41,75 @@
 
 .home-featured-img:hover {
   transform: scale(1.05);
+}
+
+.home-featured-link {
+  perspective: 1400px;
+}
+
+.home-flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.home-flip-front,
+.home-flip-back {
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.home-flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+.home-flip-back .home-featured-img {
+  height: 100%;
+}
+
+.home-flip-back { pointer-events: none; }
+.home-flip-inner.flipped .home-flip-back { pointer-events: auto; }
+.home-flip-inner.flipped .home-flip-front { pointer-events: none; }
+
+.home-flip-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.home-featured-link:hover .home-flip-btn {
+  opacity: 1;
+}
+
+.home-flip-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.home-flip-btn svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .home-mobile-logo {

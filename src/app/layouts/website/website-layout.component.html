@@ -13,13 +13,29 @@
     </div>
   </div>
 
-  <a routerLink="/releases" class="home-featured-link">
-    <img
-      [src]="uriAssetsImages + '/corgiat-front.png'"
-      alt="Featured"
-      class="home-featured-img"
-    />
-  </a>
+  <div class="home-featured-link">
+    <div class="home-flip-inner" [class.flipped]="featuredFlipped">
+      <a routerLink="/releases" class="home-flip-front">
+        <img
+          [src]="uriAssetsImages + '/corgiat-front.png'"
+          alt="Featured"
+          class="home-featured-img"
+        />
+      </a>
+      <a routerLink="/releases" class="home-flip-back">
+        <img
+          [src]="uriAssetsImages + '/corgiat-retro.png'"
+          alt="Featured (back)"
+          class="home-featured-img"
+        />
+      </a>
+    </div>
+    <button class="home-flip-btn" (click)="onFeaturedFlipToggle()" aria-label="Flip image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
 
 }
 

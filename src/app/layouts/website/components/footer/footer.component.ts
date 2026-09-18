@@ -42,8 +42,9 @@ export class FooterComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    // Su mobile in home page il footer resta sempre visibile
-    if (window.innerWidth <= 768 && this.isHome()) {
+
+    // Su home page il footer resta sempre visibile
+    if (this.isHome()) {
       this.isHidden = false;
       return;
     }

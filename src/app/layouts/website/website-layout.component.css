@@ -549,10 +549,23 @@
 
   .home-featured-link {
 
-    display: none;
+    display: none !important;
 
   }
 
+
+  .home-image-strip-wrapper {
+
+    display: none !important;
+
+  }
+
+
+  .home-image-strip-toggle {
+
+    display: none !important;
+
+  }
 
 
   .home-mobile-logo {

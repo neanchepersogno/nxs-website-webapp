@@ -1,47 +1,234 @@
 <div class="preload">
-  <img [src]="uriAssetsImages + '/logo-main.png'" alt="Logo Neanche Per Sogno" />
+
+  <img
+    [src]="uriAssetsImages + '/logo-main.png'"
+    alt="Logo Neanche Per Sogno"
+  />
+
 </div>
 
+
 @if (isHome()) {
+
   <div class="home-mobile-logo">
+
     <a routerLink="/">
-      <img [src]="uriAssetsImages + '/nxs-logo.png'" alt="Logo Neanche Per Sogno" class="home-mobile-logo-img" />
+
+      <img
+        [src]="uriAssetsImages + '/nxs-logo.png'"
+        alt="Logo Neanche Per Sogno"
+        class="home-mobile-logo-img"
+      />
+
     </a>
+
     <div class="home-mobile-logo-credit">
+
       EST. 2022, Logo by
-      <a href="https://www.muah.studio" target="_blank" rel="noopener noreferrer">Muah! Studio</a>
+
+      <a
+        href="https://www.muah.studio"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Muah! Studio
+      </a>
+
     </div>
+
   </div>
 
-  <div class="home-featured-link">
-    <div class="home-flip-inner" [class.flipped]="featuredFlipped">
-      <a routerLink="/releases" class="home-flip-front">
+
+  <div
+    class="home-featured-link"
+    [class.hidden-by-image-strip]="imageStripOpen"
+  >
+
+    <div
+      class="home-flip-inner"
+      [class.flipped]="featuredFlipped"
+    >
+
+      <a
+        routerLink="/releases"
+        class="home-flip-front"
+      >
+
         <img
           [src]="uriAssetsImages + '/corgiat-front.png'"
           alt="Featured"
           class="home-featured-img"
         />
+
       </a>
-      <a routerLink="/releases" class="home-flip-back">
+
+
+      <a
+        routerLink="/releases"
+        class="home-flip-back"
+      >
+
         <img
           [src]="uriAssetsImages + '/corgiat.png'"
           alt="Featured (back)"
           class="home-featured-img"
         />
+
       </a>
+
     </div>
-    <button class="home-flip-btn" (click)="onFeaturedFlipToggle()" aria-label="Flip image">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+
+
+    <button
+      class="home-flip-btn"
+      (click)="onFeaturedFlipToggle()"
+      aria-label="Flip image"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+
+        <path d="M5 12h14"/>
+        <path d="m12 5 7 7-7 7"/>
+
       </svg>
+
     </button>
+
   </div>
+
+
+  <div
+    class="home-image-strip-wrapper"
+    [class.open]="imageStripOpen"
+  >
+
+    <div
+      #imageStrip
+      class="home-image-strip"
+
+      (scroll)="onImageStripScroll()"
+
+      (mousedown)="onImageStripMouseDown($event)"
+
+      (mousemove)="onImageStripMouseMove($event)"
+
+      (mouseup)="onImageStripMouseUp()"
+
+      (mouseleave)="onImageStripMouseUp()"
+    >
+
+      <div class="home-image-strip-track">
+
+        @for (
+          image of shuffledImages;
+          track image
+        ) {
+
+          <img
+            [src]="uriAssetsImages + '/' + image + '.png'"
+            [attr.data-gallery-image]="image"
+            [alt]="'Gallery image ' + image"
+            draggable="false"
+            (load)="onGalleryImageLoad($event, image)"
+          />
+
+        }
+
+
+        @for (
+          image of shuffledImages;
+          track 'copy1-' + image
+        ) {
+
+          <img
+            [src]="uriAssetsImages + '/' + image + '.png'"
+            [attr.data-gallery-image]="image"
+            [alt]="'Gallery image ' + image"
+            draggable="false"
+            (load)="onGalleryImageLoad($event, image)"
+          />
+
+        }
+
+
+        @for (
+          image of shuffledImages;
+          track 'copy2-' + image
+        ) {
+
+          <img
+            [src]="uriAssetsImages + '/' + image + '.png'"
+            [attr.data-gallery-image]="image"
+            [alt]="'Gallery image ' + image"
+            draggable="false"
+            (load)="onGalleryImageLoad($event, image)"
+          />
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="home-image-strip-toggle"
+    [class.open]="imageStripOpen"
+    (click)="toggleImageStrip()"
+    [attr.aria-label]="
+      imageStripOpen
+        ? 'Close gallery'
+        : 'Open gallery'
+    "
+  >
+
+    @if (imageStripOpen) {
+
+      <img
+        [src]="uriAssetsImages + '/-.png'"
+        alt="Close gallery"
+        class="home-image-strip-toggle-img"
+      />
+
+    } @else {
+
+      <img
+        [src]="uriAssetsImages + '/+.png'"
+        alt="Open gallery"
+        class="home-image-strip-toggle-img"
+      />
+
+    }
+
+  </button>
 
 }
 
-<main [@routeAnimation]="prepareRoute(routerOutlet)" class="main-content" [class.with-header]="!isHome()">
-  <router-outlet #routerOutlet="outlet"></router-outlet>
+
+<main
+  [@routeAnimation]="prepareRoute(routerOutlet)"
+  class="main-content"
+  [class.with-header]="!isHome()"
+>
+
+  <router-outlet
+    #routerOutlet="outlet"
+  ></router-outlet>
+
 </main>
+
+
 <app-header></app-header>
+
 <app-footer></app-footer>
+
 <app-scroll-bar-bottom></app-scroll-bar-bottom>

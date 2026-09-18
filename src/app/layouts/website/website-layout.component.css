@@ -27,9 +27,7 @@
   transition:
     opacity 400ms ease,
     visibility 400ms ease;
-
 }
-
 
 
 @keyframes homeEnter {
@@ -55,17 +53,44 @@
 }
 
 
+/*
+ * Animazione di uscita di Corgiat
+ * quando viene aperta la galleria.
+ */
 
-.home-featured-link.hidden-by-image-strip {
+@keyframes homeFeaturedExit {
 
-  opacity: 0 !important;
+  from {
 
-  visibility: hidden;
+    transform:
+      translateY(0);
 
-  pointer-events: none;
+    opacity: 1;
+
+  }
+
+  to {
+
+    transform:
+      translateY(100%);
+
+    opacity: 0;
+
+  }
 
 }
 
+
+.home-featured-link.hidden-by-image-strip {
+
+  pointer-events: none;
+
+  animation:
+    homeFeaturedExit
+    600ms
+    ease
+    forwards;
+}
 
 
 .home-featured-img {
@@ -90,18 +115,14 @@
     3s
     ease-in-out
     infinite;
-
 }
-
 
 
 .home-featured-img:hover {
 
   transform:
     scale(1.05);
-
 }
-
 
 
 .home-flip-inner {
@@ -120,18 +141,14 @@
       0.2,
       1
     );
-
 }
-
 
 
 .home-flip-inner.flipped {
 
   transform:
     rotateY(180deg);
-
 }
-
 
 
 .home-flip-front,
@@ -144,9 +161,7 @@
 
   -webkit-backface-visibility:
     hidden;
-
 }
-
 
 
 .home-flip-back {
@@ -157,44 +172,34 @@
 
   transform:
     rotateY(180deg);
-
 }
-
 
 
 .home-flip-back
 .home-featured-img {
 
   height: 100%;
-
 }
-
 
 
 .home-flip-back {
 
   pointer-events: none;
-
 }
-
 
 
 .home-flip-inner.flipped
 .home-flip-back {
 
   pointer-events: auto;
-
 }
-
 
 
 .home-flip-inner.flipped
 .home-flip-front {
 
   pointer-events: none;
-
 }
-
 
 
 .home-flip-btn {
@@ -241,18 +246,14 @@
   transition:
     opacity 0.2s ease,
     background 0.2s ease;
-
 }
-
 
 
 .home-featured-link:hover
 .home-flip-btn {
 
   opacity: 1;
-
 }
-
 
 
 .home-flip-btn:hover {
@@ -264,9 +265,7 @@
       255,
       0.85
     );
-
 }
-
 
 
 .home-flip-btn svg {
@@ -276,9 +275,7 @@
   height: 100%;
 
   display: block;
-
 }
-
 
 
 .home-image-strip-wrapper {
@@ -291,18 +288,12 @@
 
   width: 100vw;
 
-  /*
-   * Il wrapper non occupa spazio nella pagina.
-   * La galleria è sovrapposta al contenuto solo quando aperta.
-   */
   height: 0;
 
   z-index: 10000;
 
   pointer-events: none;
-
 }
-
 
 
 .home-image-strip {
@@ -315,10 +306,6 @@
 
   width: 100vw;
 
-  /*
-   * L'altezza viene determinata dal contenuto.
-   * Non rimane una fascia fissa da 700px sotto le immagini.
-   */
   height: auto;
 
   overflow-x: auto;
@@ -342,17 +329,13 @@
 
   transition:
     transform 1000ms ease;
-
 }
-
 
 
 .home-image-strip::-webkit-scrollbar {
 
   display: none;
-
 }
-
 
 
 .home-image-strip-wrapper.open
@@ -362,17 +345,13 @@
     translateY(0);
 
   pointer-events: auto;
-
 }
-
 
 
 .home-image-strip:active {
 
   cursor: grabbing;
-
 }
-
 
 
 .home-image-strip-track {
@@ -383,26 +362,16 @@
 
   width: max-content;
 
-  /*
-   * Nessuna altezza fissa:
-   * segue l'altezza reale delle immagini.
-   */
   height: auto;
 
   gap: 1px;
-
 }
-
 
 
 .home-image-strip-track img {
 
   display: block;
 
-  /*
-   * Width e height vengono impostati
-   * dinamicamente dal TypeScript.
-   */
   width: auto;
 
   height: auto;
@@ -424,9 +393,7 @@
     opacity 100ms ease,
     width 100ms ease,
     height 100ms ease;
-
 }
-
 
 
 .home-image-strip-toggle {
@@ -463,17 +430,13 @@
 
   transition:
     opacity 0.2s ease;
-
 }
-
 
 
 .home-image-strip-toggle:hover {
 
   opacity: 1;
-
 }
-
 
 
 .home-image-strip-toggle-img {
@@ -485,17 +448,13 @@
   height: 36px;
 
   object-fit: contain;
-
 }
-
 
 
 .home-mobile-logo {
 
   display: none;
-
 }
-
 
 
 @keyframes homeLogoEnter {
@@ -519,7 +478,6 @@
   }
 
 }
-
 
 
 @keyframes pulse {
@@ -560,8 +518,11 @@
 }
 
 
-
 @media (max-width: 768px) {
+
+  /*
+   * MOBILE
+   */
 
   .home-featured-link {
 
@@ -570,16 +531,102 @@
   }
 
 
+  /*
+   * La galleria mobile è attiva.
+   */
+
   .home-image-strip-wrapper {
 
-    display: none !important;
+    display: block !important;
+
+    height: 0;
+
+    z-index: 10000;
 
   }
 
 
+  .home-image-strip {
+
+    width: 100vw;
+
+    height: auto;
+
+    max-height: 62vh;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x;
+
+    background: #fff;
+
+  }
+
+
+  .home-image-strip-track {
+
+    height: auto;
+
+    width: max-content;
+
+    align-items: flex-start;
+
+  }
+
+
+  .home-image-strip-track img {
+
+    height: auto;
+
+    width: auto;
+
+    max-height: 62vh;
+
+  }
+
+
+  /*
+   * Pulsante + / -
+   *
+   * Rimane sempre nell'angolo superiore destro.
+   */
+
   .home-image-strip-toggle {
 
-    display: none !important;
+    display: flex !important;
+
+    position: fixed;
+
+    top: 18px;
+
+    right: 18px;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 0;
+
+    z-index: 10002;
+
+    opacity: 0.85;
+
+    pointer-events: auto;
+
+  }
+
+
+  .home-image-strip-toggle-img {
+
+    width: 38px;
+
+    height: 38px;
+
+    object-fit: contain;
 
   }
 
@@ -617,7 +664,6 @@
   }
 
 
-
   .home-mobile-logo-img {
 
     max-width: 320px;
@@ -629,7 +675,6 @@
     cursor: pointer;
 
   }
-
 
 
   .home-mobile-logo-credit {
@@ -654,7 +699,6 @@
   }
 
 
-
   .home-mobile-logo-credit a {
 
     color: #c0c0c0;
@@ -662,7 +706,6 @@
     text-decoration: none;
 
   }
-
 
 
   .main-content.with-header {

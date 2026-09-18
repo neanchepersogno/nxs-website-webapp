@@ -90,10 +90,6 @@ export class WebsiteLayoutComponent
   private loadedGalleryImages =
     new Set<number>();
 
-  /*
-   * Dimensione originale assegnata a ogni immagine.
-   * Rimane invariata durante il resize.
-   */
   private galleryImageSizes =
     new Map<
       number,
@@ -117,10 +113,6 @@ export class WebsiteLayoutComponent
 
     this.startFeaturedFlipInterval();
 
-    /*
-     * Aggiorna le immagini quando viene
-     * ridimensionata la finestra del browser.
-     */
     window.addEventListener(
       'resize',
       this.onWindowResize
@@ -143,18 +135,18 @@ export class WebsiteLayoutComponent
   }
 
 
-  /*
-   * Gestione del resize della finestra.
-   */
   private onWindowResize = (): void => {
 
     /*
-     * Su smartphone non facciamo nulla.
-     * La galleria è già completamente nascosta
-     * dal media query CSS.
+     * Desktop e mobile vengono gestiti
+     * separatamente.
      */
     if (window.innerWidth <= 768) {
+
+      this.resizeGalleryImages();
+
       return;
+
     }
 
     this.resizeGalleryImages();
@@ -209,12 +201,12 @@ export class WebsiteLayoutComponent
           return;
         }
 
-        if (!this.imageSetWidth) {
-
-          this.imageSetWidth =
-            strip.scrollWidth / 3;
-
-        }
+        /*
+         * Su mobile ricalcoliamo sempre la
+         * larghezza della galleria.
+         */
+        this.imageSetWidth =
+          strip.scrollWidth / 3;
 
         if (this.imageSetWidth > 0) {
 
@@ -249,11 +241,6 @@ export class WebsiteLayoutComponent
     }
 
 
-    /*
-     * Generiamo la dimensione casuale una sola volta.
-     * In questo modo il resize non cambia la dimensione
-     * "personale" dell'immagine.
-     */
     if (
       !this.galleryImageSizes.has(
         imageNumber
@@ -331,10 +318,6 @@ export class WebsiteLayoutComponent
     }
 
 
-    /*
-     * Applichiamo la dimensione in base alla
-     * finestra attuale.
-     */
     this.applyGalleryImageSize(
       image,
       imageNumber
@@ -380,10 +363,6 @@ export class WebsiteLayoutComponent
   }
 
 
-  /*
-   * Applica alla singola immagine il fattore
-   * di scala necessario in base alla finestra.
-   */
   private applyGalleryImageSize(
     image: HTMLImageElement,
     imageNumber: number
@@ -400,43 +379,69 @@ export class WebsiteLayoutComponent
 
 
     /*
-     * Dimensione massima della galleria.
+     * DESKTOP
      *
-     * A finestra grande:
-     *    scale = 1
-     *
-     * A finestra piccola:
-     *    scale < 1
+     * Questo valore è quello che hai scelto
+     * nella versione che ora funziona.
      */
-    
+    if (window.innerWidth > 768) {
 
-    const galleryScale = 0.60;
-    const maxGalleryHeight = 700;
+      const galleryScale = 0.75;
+
+      const maxGalleryHeight = 700;
+
+      const availableHeight =
+        window.innerHeight *
+        galleryScale;
+
+      const scale =
+        Math.min(
+          1,
+          availableHeight /
+          maxGalleryHeight
+        );
+
+      image.style.width =
+        `${size.width * scale}px`;
+
+      image.style.height =
+        `${size.height * scale}px`;
+
+      return;
+
+    }
+
+
+    /*
+     * MOBILE
+     *
+     * La galleria mobile occupa una parte
+     * controllata dello schermo.
+     *
+     * Puoi modificare 0.62 per rendere
+     * le immagini più grandi o più piccole.
+     */
+    const mobileGalleryScale = 0.50;
 
 const availableHeight =
-  window.innerHeight * galleryScale;
+  window.innerHeight *
+  mobileGalleryScale;
 
+const scale =
+  Math.min(
+    1,
+    availableHeight / 700
+  );
 
-    const scale =
-      Math.min(
-        1,
-        availableHeight /
-        maxGalleryHeight
-      );
+image.style.width =
+  `${size.width * scale}px`;
 
-
-    image.style.width =
-      `${size.width * scale}px`;
-
-    image.style.height =
-      `${size.height * scale}px`;
+image.style.height =
+  `${size.height * scale}px`;
 
   }
 
 
-  /*
-   * Ridimensiona tutte le immagini già caricate.
-   */
   private resizeGalleryImages(): void {
 
     const strip =
@@ -487,11 +492,6 @@ const availableHeight =
     );
 
 
-    /*
-     * Dopo aver cambiato le dimensioni,
-     * ricalcoliamo la larghezza di una copia
-     * completa della galleria.
-     */
     requestAnimationFrame(() => {
 
       this.imageSetWidth =

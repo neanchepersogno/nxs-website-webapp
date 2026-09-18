@@ -90,6 +90,10 @@ export class WebsiteLayoutComponent
   private loadedGalleryImages =
     new Set<number>();
 
+  /*
+   * Dimensione originale assegnata a ogni immagine.
+   * Rimane invariata durante il resize.
+   */
   private galleryImageSizes =
     new Map<
       number,
@@ -113,6 +117,15 @@ export class WebsiteLayoutComponent
 
     this.startFeaturedFlipInterval();
 
+    /*
+     * Aggiorna le immagini quando viene
+     * ridimensionata la finestra del browser.
+     */
+    window.addEventListener(
+      'resize',
+      this.onWindowResize
+    );
+
   }
 
 
@@ -122,7 +135,31 @@ export class WebsiteLayoutComponent
       this.featuredFlipInterval
     );
 
+    window.removeEventListener(
+      'resize',
+      this.onWindowResize
+    );
+
   }
+
+
+  /*
+   * Gestione del resize della finestra.
+   */
+  private onWindowResize = (): void => {
+
+    /*
+     * Su smartphone non facciamo nulla.
+     * La galleria è già completamente nascosta
+     * dal media query CSS.
+     */
+    if (window.innerWidth <= 768) {
+      return;
+    }
+
+    this.resizeGalleryImages();
+
+  };
 
 
   private shuffleImages(): void {
@@ -212,6 +249,11 @@ export class WebsiteLayoutComponent
     }
 
 
+    /*
+     * Generiamo la dimensione casuale una sola volta.
+     * In questo modo il resize non cambia la dimensione
+     * "personale" dell'immagine.
+     */
     if (
       !this.galleryImageSizes.has(
         imageNumber
@@ -289,21 +331,15 @@ export class WebsiteLayoutComponent
     }
 
 
-    const size =
-      this.galleryImageSizes.get(
-        imageNumber
-      );
+    /*
+     * Applichiamo la dimensione in base alla
+     * finestra attuale.
+     */
+    this.applyGalleryImageSize(
+      image,
+      imageNumber
+    );
 
-    if (!size) {
-      return;
-    }
-
-
-    image.style.width =
-      `${size.width}px`;
-
-    image.style.height =
-      `${size.height}px`;
 
     image.style.opacity =
       '1';
@@ -340,6 +376,138 @@ export class WebsiteLayoutComponent
       });
 
     }
+
+  }
+
+
+  /*
+   * Applica alla singola immagine il fattore
+   * di scala necessario in base alla finestra.
+   */
+  private applyGalleryImageSize(
+    image: HTMLImageElement,
+    imageNumber: number
+  ): void {
+
+    const size =
+      this.galleryImageSizes.get(
+        imageNumber
+      );
+
+    if (!size) {
+      return;
+    }
+
+
+    /*
+     * Dimensione massima della galleria.
+     *
+     * A finestra grande:
+     *    scale = 1
+     *
+     * A finestra piccola:
+     *    scale < 1
+     */
+    
+
+    const galleryScale = 0.60;
+    const maxGalleryHeight = 700;
+
+const availableHeight =
+  window.innerHeight * galleryScale;
+
+
+    const scale =
+      Math.min(
+        1,
+        availableHeight /
+        maxGalleryHeight
+      );
+
+
+    image.style.width =
+      `${size.width * scale}px`;
+
+    image.style.height =
+      `${size.height * scale}px`;
+
+  }
+
+
+  /*
+   * Ridimensiona tutte le immagini già caricate.
+   */
+  private resizeGalleryImages(): void {
+
+    const strip =
+      this.imageStrip?.nativeElement;
+
+    if (!strip) {
+      return;
+    }
+
+
+    const images =
+      strip.querySelectorAll(
+        'img[data-gallery-image]'
+      );
+
+
+    images.forEach(
+      (element) => {
+
+        const image =
+          element as HTMLImageElement;
+
+        const imageNumber =
+          Number(
+            image.getAttribute(
+              'data-gallery-image'
+            )
+          );
+
+        if (
+          !imageNumber ||
+          !this.galleryImageSizes.has(
+            imageNumber
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        this.applyGalleryImageSize(
+          image,
+          imageNumber
+        );
+
+      }
+    );
+
+
+    /*
+     * Dopo aver cambiato le dimensioni,
+     * ricalcoliamo la larghezza di una copia
+     * completa della galleria.
+     */
+    requestAnimationFrame(() => {
+
+      this.imageSetWidth =
+        strip.scrollWidth / 3;
+
+      if (
+        this.imageStripOpen &&
+        this.imageSetWidth > 0
+      ) {
+
+        strip.scrollLeft =
+          this.imageSetWidth;
+
+      }
+
+    });
 
   }
 

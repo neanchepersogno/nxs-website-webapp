@@ -291,6 +291,10 @@
 
   width: 100vw;
 
+  /*
+   * Il wrapper non occupa spazio nella pagina.
+   * La galleria è sovrapposta al contenuto solo quando aperta.
+   */
   height: 0;
 
   z-index: 10000;
@@ -311,7 +315,11 @@
 
   width: 100vw;
 
-  height: 700px;
+  /*
+   * L'altezza viene determinata dal contenuto.
+   * Non rimane una fascia fissa da 700px sotto le immagini.
+   */
+  height: auto;
 
   overflow-x: auto;
 
@@ -375,7 +383,11 @@
 
   width: max-content;
 
-  height: 700px;
+  /*
+   * Nessuna altezza fissa:
+   * segue l'altezza reale delle immagini.
+   */
+  height: auto;
 
   gap: 1px;
 
@@ -387,9 +399,13 @@
 
   display: block;
 
+  /*
+   * Width e height vengono impostati
+   * dinamicamente dal TypeScript.
+   */
   width: auto;
 
-  height: 700px;
+  height: auto;
 
   flex:
     0 0 auto;

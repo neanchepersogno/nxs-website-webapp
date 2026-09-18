@@ -53,11 +53,6 @@
 }
 
 
-/*
- * Animazione di uscita di Corgiat
- * quando viene aperta la galleria.
- */
-
 @keyframes homeFeaturedExit {
 
   from {
@@ -87,7 +82,7 @@
 
   animation:
     homeFeaturedExit
-    600ms
+    1000ms
     ease
     forwards;
 }
@@ -457,6 +452,18 @@
 }
 
 
+/*
+ * GALLERIA VERTICALE MOBILE
+ *
+ * Nascosta completamente su desktop.
+ */
+
+.home-mobile-vertical-gallery {
+
+  display: none;
+}
+
+
 @keyframes homeLogoEnter {
 
   from {
@@ -532,104 +539,8 @@
 
 
   /*
-   * La galleria mobile è attiva.
+   * Logo mobile normale.
    */
-
-  .home-image-strip-wrapper {
-
-    display: block !important;
-
-    height: 0;
-
-    z-index: 10000;
-
-  }
-
-
-  .home-image-strip {
-
-    width: 100vw;
-
-    height: auto;
-
-    max-height: 62vh;
-
-    overflow-x: auto;
-
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: touch;
-
-    touch-action: pan-x;
-
-    background: #fff;
-
-  }
-
-
-  .home-image-strip-track {
-
-    height: auto;
-
-    width: max-content;
-
-    align-items: flex-start;
-
-  }
-
-
-  .home-image-strip-track img {
-
-    height: auto;
-
-    width: auto;
-
-    max-height: 62vh;
-
-  }
-
-
-  /*
-   * Pulsante + / -
-   *
-   * Rimane sempre nell'angolo superiore destro.
-   */
-
-  .home-image-strip-toggle {
-
-    display: flex !important;
-
-    position: fixed;
-
-    top: 18px;
-
-    right: 18px;
-
-    width: 42px;
-
-    height: 42px;
-
-    padding: 0;
-
-    z-index: 10002;
-
-    opacity: 0.85;
-
-    pointer-events: auto;
-
-  }
-
-
-  .home-image-strip-toggle-img {
-
-    width: 38px;
-
-    height: 38px;
-
-    object-fit: contain;
-
-  }
-
 
   .home-mobile-logo {
 
@@ -661,6 +572,9 @@
       ease-out
       forwards;
 
+    transition:
+      opacity 500ms ease,
+      transform 1000ms ease;
   }
 
 
@@ -673,6 +587,24 @@
     user-select: none;
 
     cursor: pointer;
+
+    transition:
+      max-width 1000ms ease;
+  }
+
+
+  /*
+   * Quando la galleria è aperta,
+   * il logo mobile sparisce.
+   */
+
+  .home-mobile-logo:has(
+    ~ .home-image-strip-wrapper.open
+  ) {
+
+    opacity: 0 !important;
+
+    pointer-events: none;
 
   }
 
@@ -704,6 +636,196 @@
     color: #c0c0c0;
 
     text-decoration: none;
+
+  }
+
+
+  /*
+   * Galleria normale nascosta su smartphone.
+   */
+
+  .home-image-strip-wrapper {
+
+    display: none !important;
+
+  }
+
+
+  /*
+   * GALLERIA VERTICALE MOBILE
+   *
+   * La fascia inferiore rimane libera
+   * per la scrollbar.
+   */
+
+  .home-mobile-vertical-gallery {
+
+    display: block;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100vw;
+
+    height: calc(100dvh - 26px);
+
+    z-index: 10001;
+
+    background: #fff;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transform:
+      translateY(-100%);
+
+    transition:
+      transform 1000ms ease,
+      opacity 300ms ease;
+
+    overflow: hidden;
+
+  }
+
+
+  .home-mobile-vertical-gallery.open {
+
+    pointer-events: auto;
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
+
+  .home-mobile-vertical-strip {
+
+    width: 100vw;
+
+    height: calc(100dvh - 12px);
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x;
+
+    scrollbar-width: none;
+
+    background: #fff;
+
+  }
+
+
+  .home-mobile-vertical-track {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    width: max-content;
+
+    height: calc(100dvh - 12px);
+
+    gap: 0;
+
+  }
+
+
+  .home-mobile-vertical-track img {
+
+    display: block;
+
+    flex:
+      0 0 auto;
+
+    height: calc(100dvh - 12px);
+
+    width: auto;
+
+    max-height: none;
+
+    object-fit: contain;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    pointer-events: none;
+
+  }
+
+
+  /*
+   * Nascondiamo il contenuto della pagina
+   * quando la galleria verticale è aperta.
+   *
+   * NON nascondiamo app-scroll-bar-bottom.
+   */
+
+  :host:has(
+    .home-mobile-vertical-gallery.open
+  ) {
+
+    .main-content,
+    app-header,
+    app-footer {
+
+      opacity: 0 !important;
+
+      visibility: hidden !important;
+
+      pointer-events: none !important;
+
+    }
+
+  }
+
+
+  /*
+   * Pulsante + / -
+   */
+
+  .home-image-strip-toggle {
+
+    display: flex !important;
+
+    position: fixed;
+
+    top: 18px;
+
+    right: 18px;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 0;
+
+    z-index: 10003;
+
+    opacity: 0.85;
+
+    pointer-events: auto;
+
+  }
+
+
+  .home-image-strip-toggle-img {
+
+    width: 38px;
+
+    height: 38px;
+
+    object-fit: contain;
 
   }
 

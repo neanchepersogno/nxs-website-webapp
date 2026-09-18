@@ -1,31 +1,23 @@
 <div class="preload">
-
   <img
     [src]="uriAssetsImages + '/logo-main.png'"
     alt="Logo Neanche Per Sogno"
   />
-
 </div>
-
 
 @if (isHome()) {
 
   <div class="home-mobile-logo">
-
     <a routerLink="/">
-
       <img
         [src]="uriAssetsImages + '/nxs-logo.png'"
         alt="Logo Neanche Per Sogno"
         class="home-mobile-logo-img"
       />
-
     </a>
 
     <div class="home-mobile-logo-credit">
-
       EST. 2022, Logo by
-
       <a
         href="https://www.muah.studio"
         target="_blank"
@@ -33,9 +25,7 @@
       >
         Muah! Studio
       </a>
-
     </div>
-
   </div>
 
 
@@ -53,13 +43,11 @@
         routerLink="/releases"
         class="home-flip-front"
       >
-
         <img
           [src]="uriAssetsImages + '/corgiat-front.png'"
           alt="Featured"
           class="home-featured-img"
         />
-
       </a>
 
 
@@ -67,13 +55,11 @@
         routerLink="/releases"
         class="home-flip-back"
       >
-
         <img
           [src]="uriAssetsImages + '/corgiat.png'"
           alt="Featured (back)"
           class="home-featured-img"
         />
-
       </a>
 
     </div>
@@ -84,7 +70,6 @@
       (click)="onFeaturedFlipToggle()"
       aria-label="Flip image"
     >
-
       <svg
         viewBox="0 0 24 24"
         fill="none"
@@ -93,16 +78,15 @@
         stroke-linecap="round"
         stroke-linejoin="round"
       >
-
         <path d="M5 12h14"/>
         <path d="m12 5 7 7-7 7"/>
-
       </svg>
-
     </button>
 
   </div>
 
+
+  <!-- GALLERIA NORMALE / DESKTOP -->
 
   <div
     class="home-image-strip-wrapper"
@@ -112,35 +96,16 @@
     <div
       #imageStrip
       class="home-image-strip"
-
       (scroll)="onImageStripScroll()"
-
       (mousedown)="onImageStripMouseDown($event)"
-
       (mousemove)="onImageStripMouseMove($event)"
-
       (mouseup)="onImageStripMouseUp()"
-
       (mouseleave)="onImageStripMouseUp()"
     >
 
       <div class="home-image-strip-track">
 
-        @for (
-          image of shuffledImages;
-          track image
-        ) {
-
-          <img
-            [src]="uriAssetsImages + '/' + image + '.png'"
-            [attr.data-gallery-image]="image"
-            [alt]="'Gallery image ' + image"
-            draggable="false"
-            (load)="onGalleryImageLoad($event, image)"
-          />
-
-        }
-
+        <!-- COPIA 1 -->
 
         @for (
           image of shuffledImages;
@@ -158,9 +123,29 @@
         }
 
 
+        <!-- COPIA 2 -->
+
         @for (
           image of shuffledImages;
           track 'copy2-' + image
+        ) {
+
+          <img
+            [src]="uriAssetsImages + '/' + image + '.png'"
+            [attr.data-gallery-image]="image"
+            [alt]="'Gallery image ' + image"
+            draggable="false"
+            (load)="onGalleryImageLoad($event, image)"
+          />
+
+        }
+
+
+        <!-- COPIA 3 -->
+
+        @for (
+          image of shuffledImages;
+          track 'copy3-' + image
         ) {
 
           <img
@@ -179,6 +164,80 @@
 
   </div>
 
+
+  <!-- GALLERIA VERTICALE MOBILE -->
+
+  <div
+    class="home-mobile-vertical-gallery"
+    [class.open]="imageStripOpen"
+  >
+
+    <div
+      #mobileImageStrip
+      class="home-mobile-vertical-strip"
+      (scroll)="onMobileImageStripScroll()"
+    >
+
+      <div class="home-mobile-vertical-track">
+
+        <!-- COPIA 1 -->
+
+        @for (
+          image of verticalImages;
+          track 'mobile-copy1-' + image
+        ) {
+
+          <img
+            [src]="uriAssetsImages + '/' + image + 'v.png'"
+            [attr.data-vertical-gallery-image]="image"
+            [alt]="'Vertical gallery image ' + image"
+            draggable="false"
+          />
+
+        }
+
+
+        <!-- COPIA 2 -->
+
+        @for (
+          image of verticalImages;
+          track 'mobile-copy2-' + image
+        ) {
+
+          <img
+            [src]="uriAssetsImages + '/' + image + 'v.png'"
+            [attr.data-vertical-gallery-image]="image"
+            [alt]="'Vertical gallery image ' + image"
+            draggable="false"
+          />
+
+        }
+
+
+        <!-- COPIA 3 -->
+
+        @for (
+          image of verticalImages;
+          track 'mobile-copy3-' + image
+        ) {
+
+          <img
+            [src]="uriAssetsImages + '/' + image + 'v.png'"
+            [attr.data-vertical-gallery-image]="image"
+            [alt]="'Vertical gallery image ' + image"
+            draggable="false"
+          />
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOGGLE -->
 
   <button
     class="home-image-strip-toggle"

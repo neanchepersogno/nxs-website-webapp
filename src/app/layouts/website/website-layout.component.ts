@@ -72,14 +72,28 @@ export class WebsiteLayoutComponent
   private featuredFlipInterval?:
     ReturnType<typeof setInterval>;
 
+  /*
+   * Galleria desktop / normale.
+   */
   shuffledImages: number[] = [];
+
+  /*
+   * Galleria verticale mobile.
+   * L'ordine viene randomizzato all'avvio.
+   */
+  verticalImages: number[] = [];
 
   imageStripOpen = false;
 
   @ViewChild('imageStrip')
   imageStrip?: ElementRef<HTMLDivElement>;
 
+  @ViewChild('mobileImageStrip')
+  mobileImageStrip?: ElementRef<HTMLDivElement>;
+
   private imageSetWidth = 0;
+
+  private mobileImageSetWidth = 0;
 
   private isDragging = false;
 
@@ -109,7 +123,15 @@ export class WebsiteLayoutComponent
 
     this.imageStripOpen = false;
 
+    /*
+     * Randomizza la galleria desktop.
+     */
     this.shuffleImages();
+
+    /*
+     * Randomizza la galleria verticale mobile.
+     */
+    this.shuffleVerticalImages();
 
     this.startFeaturedFlipInterval();
 
@@ -137,23 +159,16 @@ export class WebsiteLayoutComponent
 
   private onWindowResize = (): void => {
 
-    /*
-     * Desktop e mobile vengono gestiti
-     * separatamente.
-     */
-    if (window.innerWidth <= 768) {
-
-      this.resizeGalleryImages();
-
-      return;
-
-    }
-
     this.resizeGalleryImages();
+
+    this.resizeMobileVerticalImages();
 
   };
 
 
+  /*
+   * RANDOMIZZAZIONE GALLERIA DESKTOP
+   */
   private shuffleImages(): void {
 
     this.shuffledImages = Array.from(
@@ -185,33 +200,99 @@ export class WebsiteLayoutComponent
   }
 
 
+  /*
+   * RANDOMIZZAZIONE GALLERIA VERTICALE MOBILE
+   */
+  private shuffleVerticalImages(): void {
+
+    this.verticalImages = Array.from(
+      { length: 10 },
+      (_, i) => i + 1
+    );
+
+    for (
+      let i = this.verticalImages.length - 1;
+      i > 0;
+      i--
+    ) {
+
+      const j =
+        Math.floor(
+          Math.random() * (i + 1)
+        );
+
+      [
+        this.verticalImages[i],
+        this.verticalImages[j]
+      ] = [
+        this.verticalImages[j],
+        this.verticalImages[i]
+      ];
+
+    }
+
+  }
+
+
   toggleImageStrip(): void {
 
     this.imageStripOpen =
       !this.imageStripOpen;
 
+
     if (this.imageStripOpen) {
 
       requestAnimationFrame(() => {
 
+        /*
+         * Desktop / galleria normale.
+         */
         const strip =
           this.imageStrip?.nativeElement;
 
-        if (!strip) {
-          return;
+        if (strip) {
+
+          this.imageSetWidth =
+            strip.scrollWidth / 3;
+
+          if (this.imageSetWidth > 0) {
+
+            strip.scrollLeft =
+              this.imageSetWidth;
+
+          }
+
         }
 
+
         /*
-         * Su mobile ricalcoliamo sempre la
-         * larghezza della galleria.
+         * Mobile / galleria verticale.
+         *
+         * La sequenza è presente 3 volte.
+         * Partiamo dalla copia centrale.
          */
-        this.imageSetWidth =
-          strip.scrollWidth / 3;
+        const mobileStrip =
+          this.mobileImageStrip?.nativeElement;
 
-        if (this.imageSetWidth > 0) {
+        if (mobileStrip) {
 
-          strip.scrollLeft =
-            this.imageSetWidth;
+          this.resizeMobileVerticalImages();
+
+          requestAnimationFrame(() => {
+
+            this.mobileImageSetWidth =
+              mobileStrip.scrollWidth / 3;
+
+            if (
+              this.mobileImageSetWidth > 0
+            ) {
+
+              mobileStrip.scrollLeft =
+                this.mobileImageSetWidth;
+
+            }
+
+          });
 
         }
 
@@ -381,8 +462,8 @@ export class WebsiteLayoutComponent
     /*
      * DESKTOP
      *
-     * Questo valore è quello che hai scelto
-     * nella versione che ora funziona.
+     * Invariato rispetto alla versione
+     * attuale che funziona.
      */
     if (window.innerWidth > 768) {
 
@@ -415,29 +496,26 @@ export class WebsiteLayoutComponent
     /*
      * MOBILE
      *
-     * La galleria mobile occupa una parte
-     * controllata dello schermo.
-     *
-     * Puoi modificare 0.62 per rendere
-     * le immagini più grandi o più piccole.
+     * Galleria normale, mantenuta per
+     * la modalità precedente.
      */
-    const mobileGalleryScale = 0.50;
+    const mobileGalleryScale = 0.95;
 
-const availableHeight =
-  window.innerHeight *
-  mobileGalleryScale;
+    const availableHeight =
+      window.innerHeight *
+      mobileGalleryScale;
 
-const scale =
-  Math.min(
-    1,
-    availableHeight / 700
-  );
+    const scale =
+      Math.min(
+        1,
+        availableHeight / 700
+      );
 
-image.style.width =
-  `${size.width * scale}px`;
+    image.style.width =
+      `${size.width * scale}px`;
 
-image.style.height =
-  `${size.height * scale}px`;
+    image.style.height =
+      `${size.height * scale}px`;
 
   }
 
@@ -512,6 +590,105 @@ image.style.height =
   }
 
 
+  /*
+   * DIMENSIONAMENTO GALLERIA
+   * VERTICALE MOBILE
+   *
+   * 26px lasciati in fondo per
+   * la scrollbar inferiore.
+   */
+  private resizeMobileVerticalImages(): void {
+
+    const strip =
+      this.mobileImageStrip?.nativeElement;
+
+    if (!strip) {
+      return;
+    }
+
+
+    const images =
+      strip.querySelectorAll(
+        'img[data-vertical-gallery-image]'
+      );
+
+
+    const galleryHeight =
+      window.innerHeight - 26;
+
+
+    images.forEach(
+      (element) => {
+
+        const image =
+          element as HTMLImageElement;
+
+        if (
+          image.naturalWidth <= 0 ||
+          image.naturalHeight <= 0
+        ) {
+
+          return;
+
+        }
+
+
+        const scale =
+          galleryHeight /
+          image.naturalHeight;
+
+
+        image.style.height =
+          `${galleryHeight}px`;
+
+        image.style.width =
+          `${image.naturalWidth * scale}px`;
+
+      }
+    );
+
+
+    requestAnimationFrame(() => {
+
+      this.mobileImageSetWidth =
+        strip.scrollWidth / 3;
+
+      if (
+        this.imageStripOpen &&
+        this.mobileImageSetWidth > 0
+      ) {
+
+        if (
+          strip.scrollLeft <
+          this.mobileImageSetWidth * 0.5
+        ) {
+
+          strip.scrollLeft +=
+            this.mobileImageSetWidth;
+
+        }
+
+
+        if (
+          strip.scrollLeft >
+          this.mobileImageSetWidth * 1.5
+        ) {
+
+          strip.scrollLeft -=
+            this.mobileImageSetWidth;
+
+        }
+
+      }
+
+    });
+
+  }
+
+
+  /*
+   * SCROLL INFINITO DESKTOP
+   */
   onImageStripScroll(): void {
 
     const strip =
@@ -542,6 +719,60 @@ image.style.height =
     }
 
 
+    if (
+      strip.scrollLeft >
+      oneSet * 1.5
+    ) {
+
+      strip.scrollLeft -=
+        oneSet;
+
+    }
+
+  }
+
+
+  /*
+   * SCROLL INFINITO MOBILE
+   */
+  onMobileImageStripScroll(): void {
+
+    const strip =
+      this.mobileImageStrip?.nativeElement;
+
+    if (
+      !strip ||
+      !this.mobileImageSetWidth
+    ) {
+
+      return;
+
+    }
+
+
+    const oneSet =
+      this.mobileImageSetWidth;
+
+
+    /*
+     * Se raggiungiamo la prima copia,
+     * torniamo nella copia centrale.
+     */
+    if (
+      strip.scrollLeft <
+      oneSet * 0.5
+    ) {
+
+      strip.scrollLeft +=
+        oneSet;
+
+    }
+
+
+    /*
+     * Se raggiungiamo la terza copia,
+     * torniamo nella copia centrale.
+     */
     if (
       strip.scrollLeft >
       oneSet * 1.5

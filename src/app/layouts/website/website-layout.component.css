@@ -313,8 +313,6 @@
 
   -ms-overflow-style: none;
 
-  cursor: grab;
-
   user-select: none;
 
   pointer-events: none;
@@ -338,12 +336,20 @@
 
   transform:
     translateY(0);
-
-  pointer-events: auto;
 }
 
 
-.home-image-strip:active {
+.home-image-strip-wrapper.open
+.home-image-strip-track img {
+
+  pointer-events: auto;
+
+  cursor: grab;
+}
+
+
+.home-image-strip.dragging
+.home-image-strip-track img {
 
   cursor: grabbing;
 }

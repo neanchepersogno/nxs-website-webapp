@@ -37,7 +37,7 @@ export class FooterComponent implements OnInit {
   }
 
   isHome(): boolean {
-    return this.router.url === '/';
+    return this.router.url.split(/[?#]/)[0] === '/';
   }
 
   @HostListener('window:scroll', [])

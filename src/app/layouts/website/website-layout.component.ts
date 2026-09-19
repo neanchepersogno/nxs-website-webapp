@@ -9,8 +9,11 @@ import {
 import {
   RouterOutlet,
   RouterLink,
-  Router
+  Router,
+  NavigationStart
 } from '@angular/router';
+
+import { Subscription } from 'rxjs';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -97,9 +100,16 @@ export class WebsiteLayoutComponent
 
   private isDragging = false;
 
-  private dragStartX = 0;
+  private dragLastX = 0;
 
-  private scrollStartX = 0;
+  private dragLastTime = 0;
+
+  private dragVelocity = 0;
+
+  private momentumFrame = 0;
+
+  private routerEventsSub?:
+    Subscription;
 
   private loadedGalleryImages =
     new Set<number>();
@@ -135,6 +145,28 @@ export class WebsiteLayoutComponent
 
     this.startFeaturedFlipInterval();
 
+
+    this.routerEventsSub =
+      this.router.events.subscribe(
+        (event) => {
+
+          if (
+            event instanceof NavigationStart
+          ) {
+
+            this.imageStripOpen = false;
+
+            cancelAnimationFrame(
+              this.momentumFrame
+            );
+
+            this.onImageStripMouseUp();
+
+          }
+
+        }
+      );
+
     window.addEventListener(
       'resize',
       this.onWindowResize
@@ -148,6 +180,14 @@ export class WebsiteLayoutComponent
     clearInterval(
       this.featuredFlipInterval
     );
+
+    cancelAnimationFrame(
+      this.momentumFrame
+    );
+
+    this.onImageStripMouseUp();
+
+    this.routerEventsSub?.unsubscribe();
 
     window.removeEventListener(
       'resize',
@@ -793,27 +833,49 @@ export class WebsiteLayoutComponent
     const strip =
       this.imageStrip?.nativeElement;
 
-    if (!strip) {
+    if (
+      !strip ||
+      !(event.target instanceof HTMLImageElement)
+    ) {
       return;
     }
 
 
+    cancelAnimationFrame(
+      this.momentumFrame
+    );
+
     this.isDragging = true;
 
-    this.dragStartX =
+    this.dragLastX =
       event.pageX;
 
-    this.scrollStartX =
-      strip.scrollLeft;
+    this.dragLastTime =
+      performance.now();
+
+    this.dragVelocity = 0;
+
+    strip.classList.add('dragging');
+
+
+    window.addEventListener(
+      'mousemove',
+      this.onImageStripMouseMove
+    );
+
+    window.addEventListener(
+      'mouseup',
+      this.onImageStripMouseUp
+    );
 
     event.preventDefault();
 
   }
 
 
-  onImageStripMouseMove(
+  private onImageStripMouseMove = (
     event: MouseEvent
-  ): void {
+  ): void => {
 
     if (!this.isDragging) {
       return;
@@ -828,24 +890,130 @@ export class WebsiteLayoutComponent
     }
 
 
-    const distance =
+    const now =
+      performance.now();
+
+    const dx =
       event.pageX -
-      this.dragStartX;
+      this.dragLastX;
+
+    const dt =
+      Math.max(now - this.dragLastTime, 1);
 
 
-    strip.scrollLeft =
-      this.scrollStartX -
-      distance;
-
+    strip.scrollLeft -= dx;
 
     this.onImageStripScroll();
 
-  }
+
+    this.dragVelocity =
+      0.8 * (dx / dt) +
+      0.2 * this.dragVelocity;
+
+    this.dragLastX =
+      event.pageX;
+
+    this.dragLastTime = now;
+
+  };
 
 
-  onImageStripMouseUp(): void {
+  private onImageStripMouseUp = (): void => {
+
+    window.removeEventListener(
+      'mousemove',
+      this.onImageStripMouseMove
+    );
+
+    window.removeEventListener(
+      'mouseup',
+      this.onImageStripMouseUp
+    );
+
+    this.imageStrip?.nativeElement
+      .classList.remove('dragging');
+
+    if (!this.isDragging) {
+      return;
+    }
 
     this.isDragging = false;
+
+
+    if (
+      performance.now() -
+      this.dragLastTime > 100
+    ) {
+      return;
+    }
+
+    this.startMomentum();
+
+  };
+
+
+  private startMomentum(): void {
+
+    const strip =
+      this.imageStrip?.nativeElement;
+
+    if (!strip) {
+      return;
+    }
+
+
+    let velocity =
+      this.dragVelocity;
+
+    let position =
+      strip.scrollLeft;
+
+    let lastTime =
+      performance.now();
+
+
+    const step = (
+      now: number
+    ): void => {
+
+      const dt =
+        Math.min(now - lastTime, 32);
+
+      lastTime = now;
+
+
+      position -=
+        velocity * dt;
+
+      strip.scrollLeft =
+        position;
+
+
+      const before =
+        strip.scrollLeft;
+
+      this.onImageStripScroll();
+
+      position +=
+        strip.scrollLeft - before;
+
+
+      velocity *=
+        Math.pow(0.95, dt / 16);
+
+
+      if (Math.abs(velocity) > 0.02) {
+
+        this.momentumFrame =
+          requestAnimationFrame(step);
+
+      }
+
+    };
+
+
+    this.momentumFrame =
+      requestAnimationFrame(step);
 
   }
 

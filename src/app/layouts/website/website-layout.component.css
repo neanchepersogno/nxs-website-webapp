@@ -336,6 +336,8 @@
 
   transform:
     translateY(0);
+
+  pointer-events: auto;
 }
 
 

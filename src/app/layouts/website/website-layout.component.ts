@@ -833,7 +833,10 @@ export class WebsiteLayoutComponent
     const strip =
       this.imageStrip?.nativeElement;
 
-    if (!strip) {
+    if (
+      !strip ||
+      !(event.target instanceof HTMLImageElement)
+    ) {
       return;
     }
 

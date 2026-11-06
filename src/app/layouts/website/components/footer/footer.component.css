@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 /* --- FOOTER --- */
 .floating-footer::before {
   content: "";

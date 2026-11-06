@@ -36,6 +36,11 @@ html {
   scrollbar-gutter: stable;
 }
 
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   background: white;

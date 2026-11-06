@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .floating-header {
   display: none;
 }

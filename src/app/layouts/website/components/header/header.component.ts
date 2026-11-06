@@ -15,6 +15,6 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   isHome(): boolean {
-    return this.router.url === '/';
+    return this.router.url.split(/[?#]/)[0] === '/';
   }
 }
